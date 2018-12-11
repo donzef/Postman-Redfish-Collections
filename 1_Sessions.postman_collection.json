@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "d7ddd198-7dd0-4ab2-8459-fa118d0e29a4",
+		"name": "1_Sessions",
+		"description": "Create / Delete sessions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create iLO Session",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1eb9a163-e871-4ec0-b843-82c96d7d14f4",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"Token\", postman.getResponseHeader(\"X-Auth-Token\"));",
+							"pm.environment.set(\"SessionLocation\", postman.getResponseHeader(\"Location\"));",
+							"",
+							"",
+							"console.log(\"Token:\", pm.variables.get(\"Token\")); ",
+							"console.log(\"SessionLocation:\", pm.variables.get(\"SessionLocation\")); "
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"UserName\": \"{{iloUser}}\",\n\"Password\": \"{{iloPasswd}}\"}\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/SessionService/Sessions/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"SessionService",
+						"Sessions",
+						""
+					]
+				},
+				"description": "Get Session Token"
+			},
+			"response": []
+		},
+		{
+			"name": "Get iLO Sessions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/SessionService/Sessions/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"SessionService",
+						"Sessions",
+						""
+					]
+				},
+				"description": "Get Session Token"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Session",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b2b25c1e-241f-4abe-afe8-159806c51c49",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Success\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{SessionLocation}}",
+					"host": [
+						"{{SessionLocation}}"
+					]
+				},
+				"description": "DELETE Session"
+			},
+			"response": []
+		}
+	]
+}
