@@ -1,0 +1,341 @@
+{
+	"info": {
+		"_postman_id": "72b0e9c7-0f56-4308-9ce0-1c0a8a28dff6",
+		"name": "3_VirtualMedia",
+		"description": "This collection proposes mount and unmount Virtual drive requests using the Redfish standard and the legacy HPE Oem implementation. \n\nThe first versions of the Redfish [VirtualMedia](http://redfish.dmtf.org/schemas/v1/VirtualMedia.json) were very limited in terms of actions and properties. However, in order to propose a decent user experience, HPE implemented its own Virtual Media subsystem under the Oem sub-tree, as permitted by the Redfish standard.\n\nToday, and for backward compatibility, HPE implements both the Redfish VirtualMedia standard and its legacy Oem implementation.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CD/DvD Virtual Media",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"VirtualMedia",
+						"2",
+						""
+					]
+				},
+				"description": "Retrieves the CD/DvD Virtual Media properties.\n\nNote the standard \"Actions\" and the legacy \"Oem.Hpe.Actions\" properties. \n\nNote as well that the BootOnNextReset boolean is under the Oem.Hpe sub-tree."
+			},
+			"response": []
+		},
+		{
+			"name": "StandardDvdMount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\t\"Image\": \"http://172.22.103.1/MediaKits/Media/ISOs/SPP.iso\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/Actions/VirtualMedia.InsertMedia/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"VirtualMedia",
+						"2",
+						"Actions",
+						"VirtualMedia.InsertMedia",
+						""
+					]
+				},
+				"description": "Mount a remote .ISO file via HTTP using a standard POST request toward an Action target.\n\nNOTE: if you want the server to boot on this Virtual Media during the next reboot, you have to send a separate PATCH request. See the BootOnNextServerReset request in this collection."
+			},
+			"response": []
+		},
+		{
+			"name": "BootOnNextServerReset",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Oem\": {\"Hpe\": {\"BootOnNextServerReset\": true}}\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"VirtualMedia",
+						"2",
+						""
+					]
+				},
+				"description": "Sets BootOnNextServerReset to true in the Oem.Hpe subtree. This is the companion request of the StandardDvdMount request.\n\n\nThis request successful only when the managed server is Off or in FinishedPost state.\n\nIf the server is in InPost or in InPostDiscoveryComplete state this request will return an error.\n\nSee the [Master the Redfish Server States](https://developer.hpe.com/blog/master-the-redfish-server-states-to-improve-your-monitoring-and-manageme) article for more information on this subject."
+			},
+			"response": []
+		},
+		{
+			"name": "LegacyDvdMount1",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Oem\": {\n\t\t     \"Hpe\": {\"BootOnNextServerReset\": true}\n\t\t   },\n\t\"Image\": \"http://172.22.103.1/MediaKits/Media/ISOs/SPP.iso\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"VirtualMedia",
+						"2",
+						""
+					]
+				},
+				"description": "Legacy Dvd Mount + Boot On Next Server reset\n\nWith this PATCH request toward the Oem.Hpe subtree we can perform 2 actions at one time: mount a Virtual DvD and set the BootOnNextServerReset boolean to true.\n\nNote that the second action will be successful only if the server is in the Off or FinishedPost state.\n\nRead the [Master the Redfish Server States](https://developer.hpe.com/blog/master-the-redfish-server-states-to-improve-your-monitoring-and-manageme) article for more information on the server states."
+			},
+			"response": []
+		},
+		{
+			"name": "StandardDvdUnmount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Action\":  \"VirtualMedia.EjectMedia\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/Actions/VirtualMedia.EjectMedia/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"VirtualMedia",
+						"2",
+						"Actions",
+						"VirtualMedia.EjectMedia",
+						""
+					]
+				},
+				"description": "POST request toward an Action target as defined by Redfish to unmount a CD or DvD Virtual Media.\n\nNote that this requests automatically resets to false the BootOnNextServerReset boolean, if needed."
+			},
+			"response": []
+		},
+		{
+			"name": "LegacyDvdMount2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Action\":  \"HpeiLOVirtualMedia.InsertVirtualMedia\", \n\t\"Image\": \"http://172.22.103.1/MediaKits/Media/ISOs/SPP.iso\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/Actions/Oem/Hpe/HpeiLOVirtualMedia.InsertVirtualMedia/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"VirtualMedia",
+						"2",
+						"Actions",
+						"Oem",
+						"Hpe",
+						"HpeiLOVirtualMedia.InsertVirtualMedia",
+						""
+					]
+				},
+				"description": "Legacy POST request toward an Oem.Hpe Action target to mount a DvD virtual Media.\n\nNote that it does not set the BootOnNextServerReset to true. If needed, use the BootOnNextServer PATCH request in this collection to perform this action."
+			},
+			"response": []
+		},
+		{
+			"name": "LegacyDvdUnmount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Action\":  \"HpeiLOVirtualMedia.EjectVirtualMedia\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/Actions/Oem/Hpe/HpeiLOVirtualMedia.InsertVirtualMedia/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"VirtualMedia",
+						"2",
+						"Actions",
+						"Oem",
+						"Hpe",
+						"HpeiLOVirtualMedia.InsertVirtualMedia",
+						""
+					]
+				},
+				"description": "Legacy DvD POST request toward an Oem.Hpe Action target.\n\nNote that it will reset the BootOnNextServerReset boolean to false if needed."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "61946bfc-59be-4e62-98b6-dd19694d8a09",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "7caa90ed-608e-4791-be60-3b6b994dd96e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

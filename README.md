@@ -52,3 +52,10 @@ Read the [Managing iLO sessions with Redfish](https://developer.hpe.com/blog/man
 
 Manage HPE Smart Array controllers. This collection has been created during the writing of the [Storage management with Redfish](https://developer.hpe.com/blog/storage-management-with-redfish) article.
 
+### 3_VirtualMedia
+
+This collection proposes mount and unmount Virtual drive requests using the Redfish standard and the legacy HPE Oem implementation. 
+
+The first versions of the Redfish [VirtualMedia](http://redfish.dmtf.org/schemas/v1/VirtualMedia.json) were very limited in terms of actions and properties. However, in order to propose a decent user experience, HPE implemented its own Virtual Media subsystem under the Oem sub-tree, as permitted by the Redfish standard.
+
+Today, and for backward compatibility, HPE implements both the Redfish VirtualMedia standard and its legacy Oem implementation.
