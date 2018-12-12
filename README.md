@@ -2,11 +2,13 @@
 
 Postman collections for Redfish requests against HPE servers
 
-This repository contains exported Postman collections in .json files as well as a typical environment with suitable variables holding everything needed to run Redfish requests smoothly.
+This repository contains exported Postman collections in .json files as well as a typical environment with suitable variables holding everything needed to run Redfish requests against HPE iLOs in a smoothly manner.
 
-The overall goal is to provide raw Redfish examples to understand the basic mechanic. Once this mechanic is digested you will be able to translate the examples into your favorite programing or scripting language (Python, PowerShell...).
+The overall goal is to provide raw Redfish examples to understand the basic Redfish mechanic. Once this mechanic is digested you will be able to translate the examples into your favorite programing or scripting language (Python, PowerShell...). Note that the `Generate Code Snippet` Postman facility can help you to perform this kind of translation.
 
-It can help as well understand the examples posted in the [python-ilorest-library](https://github.com/HewlettPackard/python-ilorest-library/tree/master/examples/Redfish).
+The Redfish requests of this repository can help as well understand the examples posted in the [python-ilorest-library](https://github.com/HewlettPackard/python-ilorest-library/tree/master/examples/Redfish).
+
+**NOTE**: Using such raw Redfish requests or code snippets in a production environment is a very bad idea because Redfish objects may change their location overtime or be different from one server to another. Read the [Getting Started with iLO RESTful API](https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance) article to understand how important it is to never assume a Redfish property location.
 
 ## Requirements
 
