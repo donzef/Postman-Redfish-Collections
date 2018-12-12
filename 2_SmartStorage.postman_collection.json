@@ -746,6 +746,63 @@
 						"description": "{\n           \"CapacityGiB\": 50,\n            \"DataDrives\": [\n                \"4I:1:1\",\n                \"4I:1:2\"\n            ],\n            \"LogicalDriveName\": \"RAID0-2-50\",\n            \"Raid\": \"Raid0\",\n            \"SpareDrives\": [\n                \"11:4:6\"\n            ]\n        }"
 					},
 					"response": []
+				},
+				{
+					"name": "SanitizeDisk",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n \t\"Actions\": [\n \t\t{\n \t\t\t\"Action\": \"PhysicalDriveErase\",\n \t\t\t\"ErasePattern\": \"SanitizeRestrictedBlockErase\",\n \t\t\t\"PhysicalDriveList\": [\"1I:3:2\"]\n \t\t}\n \t\t],\n \t\t\"DataGuard\": \"Disabled\"\n }"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						},
+						"description": "PATCH request to sanitize/erase a physical disk. \n\n"
+					},
+					"response": []
 				}
 			],
 			"description": "Create / Modify / Add storage elements ",
