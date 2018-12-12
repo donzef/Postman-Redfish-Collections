@@ -10,6 +10,91 @@
 			"name": "GET Storage info",
 			"item": [
 				{
+					"name": "List array controllers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/SmartStorage/ArrayControllers/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"SmartStorage",
+								"ArrayControllers",
+								""
+							]
+						},
+						"description": "Retrieves the list of HPE Smart Array Controllers present in the remote server."
+					},
+					"response": []
+				},
+				{
+					"name": "ArrayController 0 properties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"SmartStorage",
+								"ArrayControllers",
+								"0",
+								""
+							]
+						},
+						"description": "Retrieves the properties of Array Controller 0. Edit accordingly to retrieve the properties of another Array Controller"
+					},
+					"response": []
+				},
+				{
 					"name": "SmartArray Status",
 					"event": [
 						{
@@ -172,91 +257,6 @@
 							"body": "{\n    \"@odata.context\": \"/redfish/v1/$metadata#ComputerSystem.ComputerSystem\",\n    \"@odata.etag\": \"W/\\\"7EB0C7DC\\\"\",\n    \"@odata.id\": \"/redfish/v1/Systems/1/\",\n    \"@odata.type\": \"#ComputerSystem.v1_4_0.ComputerSystem\",\n    \"Id\": \"1\",\n    \"Actions\": {\n        \"#ComputerSystem.Reset\": {\n            \"ResetType@Redfish.AllowableValues\": [\n                \"On\",\n                \"ForceOff\",\n                \"ForceRestart\",\n                \"Nmi\",\n                \"PushPowerButton\"\n            ],\n            \"target\": \"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/\"\n        }\n    },\n    \"AssetTag\": \"                                \",\n    \"Bios\": {\n        \"@odata.id\": \"/redfish/v1/systems/1/bios/\"\n    },\n    \"BiosVersion\": \"U30 v1.46 (10/02/2018)\",\n    \"Boot\": {\n        \"BootSourceOverrideEnabled\": \"Once\",\n        \"BootSourceOverrideMode\": \"UEFI\",\n        \"BootSourceOverrideTarget\": \"Cd\",\n        \"BootSourceOverrideTarget@Redfish.AllowableValues\": [\n            \"None\",\n            \"Cd\",\n            \"Hdd\",\n            \"Usb\",\n            \"SDCard\",\n            \"Utilities\",\n            \"Diags\",\n            \"BiosSetup\",\n            \"Pxe\",\n            \"UefiShell\",\n            \"UefiHttp\",\n            \"UefiTarget\"\n        ],\n        \"UefiTargetBootSourceOverride\": \"None\",\n        \"UefiTargetBootSourceOverride@Redfish.AllowableValues\": [\n            \"Fv(CDBB7B35-6833-4ED6-9AB2-57D2ACDDF6F0)/FvFile(C57AD6B7-0515-40A8-9D21-551652854E37)\",\n            \"HD(1,GPT,0ACFB12F-F695-4DB7-848B-8B037C5D99F5,0x800,0x64000)/\\\\EFI\\\\redhat\\\\shimx64.efi\",\n            \"PciRoot(0x0)/Pci(0x14,0x0)/USB(0x13,0x0)\",\n            \"UsbClass(0xFFFF,0xFFFF,0xFF,0xFF,0xFF)\",\n            \"PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x2,0x4000)\",\n            \"PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x0)\"\n        ]\n    },\n    \"EthernetInterfaces\": {\n        \"@odata.id\": \"/redfish/v1/Systems/1/EthernetInterfaces/\"\n    },\n    \"HostName\": \"hst380g10\",\n    \"IndicatorLED\": \"Off\",\n    \"Links\": {\n        \"ManagedBy\": [\n            {\n                \"@odata.id\": \"/redfish/v1/Managers/1/\"\n            }\n        ],\n        \"Chassis\": [\n            {\n                \"@odata.id\": \"/redfish/v1/Chassis/1/\"\n            }\n        ]\n    },\n    \"LogServices\": {\n        \"@odata.id\": \"/redfish/v1/Systems/1/LogServices/\"\n    },\n    \"Manufacturer\": \"HPE\",\n    \"Memory\": {\n        \"@odata.id\": \"/redfish/v1/Systems/1/Memory/\"\n    },\n    \"MemorySummary\": {\n        \"Status\": {\n            \"HealthRollup\": \"OK\"\n        },\n        \"TotalSystemMemoryGiB\": 768\n    },\n    \"Model\": \"ProLiant DL380 Gen10\",\n    \"Name\": \"Computer System\",\n    \"NetworkInterfaces\": {\n        \"@odata.id\": \"/redfish/v1/Systems/1/NetworkInterfaces/\"\n    },\n    \"Oem\": {\n        \"Hpe\": {\n            \"@odata.context\": \"/redfish/v1/$metadata#HpeComputerSystemExt.HpeComputerSystemExt\",\n            \"@odata.type\": \"#HpeComputerSystemExt.v2_5_0.HpeComputerSystemExt\",\n            \"Actions\": {\n                \"#HpeComputerSystemExt.PowerButton\": {\n                    \"PushType@Redfish.AllowableValues\": [\n                        \"Press\",\n                        \"PressAndHold\"\n                    ],\n                    \"target\": \"/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.PowerButton/\"\n                },\n                \"#HpeComputerSystemExt.SystemReset\": {\n                    \"ResetType@Redfish.AllowableValues\": [\n                        \"ColdBoot\",\n                        \"AuxCycle\"\n                    ],\n                    \"target\": \"/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SystemReset/\"\n                }\n            },\n            \"AggregateHealthStatus\": {\n                \"AgentlessManagementService\": \"Unavailable\",\n                \"BiosOrHardwareHealth\": {\n                    \"Status\": {\n                        \"Health\": \"OK\"\n                    }\n                },\n                \"FanRedundancy\": \"Redundant\",\n                \"Fans\": {\n                    \"Status\": {\n                        \"Health\": \"OK\"\n                    }\n                },\n                \"Memory\": {\n                    \"Status\": {\n                        \"Health\": \"OK\"\n                    }\n                },\n                \"Network\": {\n                    \"Status\": {\n                        \"Health\": \"OK\"\n                    }\n                },\n                \"PowerSupplies\": {\n                    \"PowerSuppliesMismatch\": false,\n                    \"Status\": {\n                        \"Health\": \"OK\"\n                    }\n                },\n                \"Processors\": {\n                    \"Status\": {\n                        \"Health\": \"OK\"\n                    }\n                },\n                \"Storage\": {\n                    \"Status\": {\n                        \"Health\": \"Warning\"\n                    }\n                },\n                \"Temperatures\": {\n                    \"Status\": {\n                        \"Health\": \"OK\"\n                    }\n                }\n            },\n            \"Bios\": {\n                \"Backup\": {\n                    \"Date\": \"06/20/2018\",\n                    \"Family\": \"U30\",\n                    \"VersionString\": \"U30 v1.42 (06/20/2018)\"\n                },\n                \"Current\": {\n                    \"Date\": \"10/02/2018\",\n                    \"Family\": \"U30\",\n                    \"VersionString\": \"U30 v1.46 (10/02/2018)\"\n                },\n                \"UefiClass\": 2\n            },\n            \"CurrentPowerOnTimeSeconds\": null,\n            \"DeviceDiscoveryComplete\": {\n                \"AMSDeviceDiscovery\": \"NoAMS\",\n                \"DeviceDiscovery\": \"vAuxDeviceDiscoveryComplete\",\n                \"SmartArrayDiscovery\": \"Cached\"\n            },\n            \"EndOfPostDelaySeconds\": null,\n            \"IntelligentProvisioningAlwaysOn\": true,\n            \"IntelligentProvisioningIndex\": 8,\n            \"IntelligentProvisioningLocation\": \"System Board\",\n            \"IntelligentProvisioningVersion\": \"3.20.154\",\n            \"IsColdBooting\": false,\n            \"Links\": {\n                \"SUT\": {\n                    \"@odata.id\": \"/redfish/v1/systems/1/hpsut/\"\n                },\n                \"HpeIpProvider\": {\n                    \"@odata.id\": \"/redfish/v1/systems/1/hpeip/\"\n                },\n                \"PCIDevices\": {\n                    \"@odata.id\": \"/redfish/v1/Systems/1/PCIDevices/\"\n                },\n                \"PCISlots\": {\n                    \"@odata.id\": \"/redfish/v1/Systems/1/PCISlots/\"\n                },\n                \"NetworkAdapters\": {\n                    \"@odata.id\": \"/redfish/v1/Systems/1/BaseNetworkAdapters/\"\n                },\n                \"SmartStorage\": {\n                    \"@odata.id\": \"/redfish/v1/Systems/1/SmartStorage/\"\n                },\n                \"USBPorts\": {\n                    \"@odata.id\": \"/redfish/v1/Systems/1/USBPorts/\"\n                },\n                \"USBDevices\": {\n                    \"@odata.id\": \"/redfish/v1/Systems/1/USBDevices/\"\n                },\n                \"EthernetInterfaces\": {\n                    \"@odata.id\": \"/redfish/v1/Systems/1/EthernetInterfaces/\"\n                }\n            },\n            \"PCAPartNumber\": \"\",\n            \"PCASerialNumber\": \"\",\n            \"PostDiscoveryCompleteTimeStamp\": \"2018-12-10T11:37:34Z\",\n            \"PostDiscoveryMode\": null,\n            \"PostMode\": null,\n            \"PostState\": \"PowerOff\",\n            \"PowerAllocationLimit\": 500,\n            \"PowerAutoOn\": \"Restore\",\n            \"PowerOnDelay\": \"Minimum\",\n            \"PowerOnMinutes\": 322256,\n            \"PowerRegulatorMode\": \"Dynamic\",\n            \"PowerRegulatorModesSupported\": [\n                \"OSControl\",\n                \"Dynamic\",\n                \"Max\",\n                \"Min\"\n            ],\n            \"SMBIOS\": {\n                \"extref\": \"/smbios\"\n            },\n            \"ServerFQDN\": \"\",\n            \"SmartStorageConfig\": [\n                {\n                    \"@odata.id\": \"/redfish/v1/systems/1/smartstorageconfig/\"\n                }\n            ],\n            \"VirtualProfile\": \"Inactive\"\n        }\n    },\n    \"PowerState\": \"Off\",\n    \"ProcessorSummary\": {\n        \"Count\": 1,\n        \"Model\": \"Intel(R) Genuine processor\",\n        \"Status\": {\n            \"HealthRollup\": \"OK\"\n        }\n    },\n    \"Processors\": {\n        \"@odata.id\": \"/redfish/v1/Systems/1/Processors/\"\n    },\n    \"SKU\": \"125629-001\",\n    \"SecureBoot\": {\n        \"@odata.id\": \"/redfish/v1/Systems/1/SecureBoot/\"\n    },\n    \"SerialNumber\": \"7CE635P01D\",\n    \"Status\": {\n        \"Health\": \"Warning\",\n        \"State\": \"Disabled\"\n    },\n    \"Storage\": {\n        \"@odata.id\": \"/redfish/v1/Systems/1/Storage/\"\n    },\n    \"SystemType\": \"Physical\",\n    \"TrustedModules\": [\n        {\n            \"Oem\": {\n                \"Hpe\": {\n                    \"@odata.context\": \"/redfish/v1/$metadata#HpeTrustedModuleExt.HpeTrustedModuleExt\",\n                    \"@odata.type\": \"#HpeTrustedModuleExt.v2_0_0.HpeTrustedModuleExt\"\n                }\n            },\n            \"Status\": {\n                \"State\": \"Absent\"\n            }\n        }\n    ],\n    \"UUID\": \"36353231-3932-4337-4536-333550303144\"\n}"
 						}
 					]
-				},
-				{
-					"name": "List array controllers",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "OData-Version",
-								"value": "4.0",
-								"disabled": true
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-Auth-Token",
-								"value": "{{Token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{iloURI}}/redfish/v1/Systems/1/SmartStorage/ArrayControllers/",
-							"host": [
-								"{{iloURI}}"
-							],
-							"path": [
-								"redfish",
-								"v1",
-								"Systems",
-								"1",
-								"SmartStorage",
-								"ArrayControllers",
-								""
-							]
-						},
-						"description": "Retrieves the list of HPE Smart Array Controllers present in the remote server."
-					},
-					"response": []
-				},
-				{
-					"name": "ArrayController 0 properties",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "OData-Version",
-								"value": "4.0",
-								"disabled": true
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-Auth-Token",
-								"value": "{{Token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{iloURI}}/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/",
-							"host": [
-								"{{iloURI}}"
-							],
-							"path": [
-								"redfish",
-								"v1",
-								"Systems",
-								"1",
-								"SmartStorage",
-								"ArrayControllers",
-								"0",
-								""
-							]
-						},
-						"description": "Retrieves the properties of Array Controller 0. Edit accordingly to retrieve the properties of another Array Controller"
-					},
-					"response": []
 				},
 				{
 					"name": "Get DiskDrives",
@@ -455,6 +455,62 @@
 							]
 						},
 						"description": "Retrieves the Settings properties that will become effective after next reboot."
+					},
+					"response": []
+				},
+				{
+					"name": "Non HPE Storage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorage/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorage",
+								""
+							]
+						},
+						"description": "Retrieves the list of non HPE storage, if any."
 					},
 					"response": []
 				}
