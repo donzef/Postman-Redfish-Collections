@@ -1,0 +1,867 @@
+{
+	"info": {
+		"_postman_id": "ff3a54f8-8f96-4f17-ba7d-7cb61c3d4e5e",
+		"name": "2_SmartStorage",
+		"description": "Management of HPE Smart Storage: view, create, delete disks and logical drives.\n\nThis collection can only be used against HPE Gen10 servers only.\n\nThis collection has been used to write the [Storage management with Redfish](https://developer.hpe.com/blog/storage-management-with-redfish) article.\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Storage info",
+			"item": [
+				{
+					"name": "List array controllers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/SmartStorage/ArrayControllers/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"SmartStorage",
+								"ArrayControllers",
+								""
+							]
+						},
+						"description": "Retrieves the list of HPE Smart Array Controllers present in the remote server."
+					},
+					"response": []
+				},
+				{
+					"name": "ArrayController 0 properties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"SmartStorage",
+								"ArrayControllers",
+								"0",
+								""
+							]
+						},
+						"description": "Retrieves the properties of Array Controller 0. Edit accordingly to retrieve the properties of another Array Controller"
+					},
+					"response": []
+				},
+				{
+					"name": "Get DiskDrives",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/DiskDrives/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"SmartStorage",
+								"ArrayControllers",
+								"0",
+								"DiskDrives",
+								""
+							]
+						},
+						"description": "Retrieves the list of disk drives managed by Array Controller 0. Edit accordingly to retrieve the disk of another controller."
+					},
+					"response": []
+				},
+				{
+					"name": "LogicalDrives",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/LogicalDrives/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"SmartStorage",
+								"ArrayControllers",
+								"0",
+								"LogicalDrives",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Current Configuration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								""
+							]
+						},
+						"description": "Retrieves the Smart Storage current configuraion properties."
+					},
+					"response": []
+				},
+				{
+					"name": "Settings area",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						},
+						"description": "Retrieves the Settings properties that will become effective after next reboot."
+					},
+					"response": []
+				}
+			],
+			"description": "GET requests"
+		},
+		{
+			"name": "Create / Modify /Add Storage",
+			"item": [
+				{
+					"name": "Create RAID1 with SpareDrive",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DataGuard\": \"Disabled\",\r\n    \"LogicalDrives\": [\r\n        {\r\n            \"CapacityGiB\": 100,\r\n            \"DataDrives\": [\r\n                \"4I:1:1\",\r\n                \"4I:1:2\"\r\n            ],\r\n            \"LogicalDriveName\": \"RAID1-1-100\",\r\n            \"Raid\": \"Raid1\",\r\n            \"SpareDrives\": [\r\n                \"11:4:6\"\r\n            ],\r\n            \"SpareRebuildMode\": \"Roaming\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						},
+						"description": "Create a RAID1 logical drive with a spare drive. \n\nEdit accordingly to your environment."
+					},
+					"response": []
+				},
+				{
+					"name": "Create RAID1 LogicalDrive noSpare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DataGuard\": \"Disabled\",\r\n    \"LogicalDrives\": [\r\n        {\r\n            \"Accelerator\": \"ControllerCache\",\r\n            \"CapacityGiB\": 100,\r\n            \"DataDrives\": [\r\n                \"4I:1:1\",\r\n                \"4I:1:2\"\r\n            ],\r\n            \"LogicalDriveName\": \"RAID1-1-100\",\r\n            \"Raid\": \"Raid1\",\r\n            \"SpareDrives\": []\r\n        }\r\n    ]\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						},
+						"description": "Create from scratch, after complete cleanup."
+					},
+					"response": []
+				},
+				{
+					"name": "Add Array with 1 RAID0 LogicalDrive noSpare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"@Redfish.Settings\": {\n        \"@odata.type\": \"#Settings.v1_0_0.Settings\",\n        \"ETag\": \"69910DA6\",\n        \"Messages\": [\n            {\n                \"MessageId\": \"SmartStorageMessages.2.0.0.Success\"\n            }\n        ],\n        \"SettingsObject\": {\n            \"@odata.id\": \"/redfish/v1/systems/1/smartstorageconfig/settings/\"\n        },\n        \"Time\": \"2018-10-24T16:00:43+07:00\"\n    },\n    \"@odata.context\": \"/redfish/v1/$metadata#SmartStorageConfig.SmartStorageConfig\",\n    \"@odata.etag\": \"W/\\\"C6281CE8ADCF5B5B5B1054D986021DFE\\\"\",\n    \"@odata.id\": \"/redfish/v1/systems/1/smartstorageconfig/\",\n    \"@odata.type\": \"#SmartStorageConfig.v2_0_0.SmartStorageConfig\",\n    \"CurrentParallelSurfaceScanCount\": 1,\n    \"DegradedPerformanceOptimization\": \"Disabled\",\n    \"DriveWriteCache\": \"Disabled\",\n    \"ElevatorSort\": \"Enabled\",\n    \"EncryptionConfiguration\": \"None\",\n    \"EncryptionEULA\": null,\n    \"ExpandPriority\": \"Medium\",\n    \"FlexibleLatencySchedulerSetting\": \"Default\",\n    \"Id\": \"smartstorageconfig\",\n    \"InconsistencyRepairPolicy\": \"Disabled\",\n    \"Location\": \"Slot 1\",\n    \"LocationFormat\": \"PCISlot\",\n    \"DataGuard\": \"Permissive\",\n    \"LogicalDrives\": [\n        {\n            \"Accelerator\": \"None\",\n            \"BlockSizeBytes\": 512,\n            \"CapacityBlocks\": 209712000,\n            \"CapacityGiB\": 99,\n            \"DataDrives\": [\n                \"4I:1:1\",\n                \"4I:1:2\"\n            ],\n            \"DriveLocationFormat\": \"ControllerPort:Box:Bay\",\n            \"LegacyBootPriority\": \"None\",\n            \"LogicalDriveName\": \"RAID1-1-100\",\n            \"LogicalDriveNumber\": 1,\n            \"ParityGroupCount\": 0,\n            \"Raid\": \"Raid1\",\n            \"SpareDrives\": [\n                \"11:4:6\"\n            ],\n            \"SpareRebuildMode\": \"Roaming\",\n            \"StripSizeBytes\": 262144,\n            \"StripeSizeBytes\": 262144,\n            \"VolumeUniqueIdentifier\": \"600508B1001C75FBC332295AC826FFA1\"\n        },\n        {\n          \"Raid\": \"Raid0\",\n          \"LogicalDriveName\": \"RAID0-300\",\n          \"DataDrives\": [\n                \"11:4:5\"\n          ]\n          \n\t\t}\n\n    ],\n    \"MonitorAndPerformanceAnalysisDelaySeconds\": 60,\n    \"NoBatteryWriteCache\": null,\n    \"Oem\": {\n        \"Hpe\": {\n            \"@odata.type\": \"#HpeBiosExt.v2_0_0.HpeBiosExt\",\n            \"SettingsObject\": {\n                \"UnmodifiedETag\": \"W/\\\"5463FDB9A61CB7B7B7D8EA3098DCDD2B\\\"\"\n            }\n        }\n    },\n    \"PhysicalDrives\": [\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"4I:1:1\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        },\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"4I:1:2\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        },\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"11:4:5\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        },\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"11:4:6\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        }\n    ],\n    \"Ports\": [\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 0\n        },\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 1\n        },\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 2\n        },\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 3\n        }\n    ],\n    \"PowerModeAfterReboot\": \"MaxPerformance\",\n    \"PredictiveSpareRebuild\": \"Disabled\",\n    \"QueueDepth\": \"Automatic\",\n    \"ReadCachePercent\": 10,\n    \"RebuildPriority\": \"High\",\n    \"SurfaceScanAnalysisDelaySeconds\": 3,\n    \"SurfaceScanAnalysisPriority\": \"Idle\",\n    \"SurvivalPowerMode\": \"Disabled\",\n    \"WriteCacheBypassThresholdKiB\": 1040\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Spare Drives with PUT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"@Redfish.Settings\": {\n        \"@odata.type\": \"#Settings.v1_0_0.Settings\",\n        \"ETag\": \"F32AAD46\",\n        \"Messages\": [\n            {\n                \"MessageArgs\": [\n                    \"11:4:6\",\n                    \"{\\\"VolumeUniqueIdentifier\\\":\\\"600508B1001C731070EA04B4FE568CFA\\\",\\\"LogicalDriveName\\\":\\\"RAID1-1-100\\\",\\\"LogicalDriveNumber\\\":0}\"\n                ],\n                \"MessageId\": \"SmartStorageMessages.2.0.0.CanAddEditableArraySpareDriveDriveIsNotUnassigned\",\n                \"RelatedProperties\": [\n                    \"#/LogicalDrives/0/SpareDrives/0\"\n                ]\n            },\n            {\n                \"MessageId\": \"SmartStorageMessages.2.0.0.Success\"\n            }\n        ],\n        \"SettingsObject\": {\n            \"@odata.id\": \"/redfish/v1/systems/1/smartstorageconfig/settings/\"\n        },\n        \"Time\": \"2018-10-24T15:13:31+07:00\"\n    },\n    \"@odata.context\": \"/redfish/v1/$metadata#SmartStorageConfig.SmartStorageConfig\",\n    \"@odata.etag\": \"W/\\\"80FA46BCB86C434343C9905063CA1E99\\\"\",\n    \"@odata.id\": \"/redfish/v1/systems/1/smartstorageconfig/\",\n    \"@odata.type\": \"#SmartStorageConfig.v2_0_0.SmartStorageConfig\",\n    \"CurrentParallelSurfaceScanCount\": 1,\n    \"DataGuard\": \"Disabled\",\n    \"DegradedPerformanceOptimization\": \"Disabled\",\n    \"DriveWriteCache\": \"Disabled\",\n    \"ElevatorSort\": \"Enabled\",\n    \"EncryptionConfiguration\": \"None\",\n    \"EncryptionEULA\": null,\n    \"ExpandPriority\": \"Medium\",\n    \"FlexibleLatencySchedulerSetting\": \"Default\",\n    \"Id\": \"smartstorageconfig\",\n    \"InconsistencyRepairPolicy\": \"Disabled\",\n    \"Location\": \"Slot 1\",\n    \"LocationFormat\": \"PCISlot\",\n    \"LogicalDrives\": [\n        {\n            \"Accelerator\": \"ControllerCache\",\n            \"BlockSizeBytes\": 512,\n            \"CapacityBlocks\": 209712000,\n            \"CapacityGiB\": 99,\n            \"DataDrives\": [\n                \"4I:1:1\",\n                \"4I:1:2\"\n            ],\n            \"DriveLocationFormat\": \"ControllerPort:Box:Bay\",\n            \"LegacyBootPriority\": \"None\",\n            \"LogicalDriveName\": \"RAID1-1-100\",\n            \"LogicalDriveNumber\": 1,\n            \"ParityGroupCount\": 0,\n            \"Raid\": \"Raid1\",\n            \"SpareDrives\": [\"11:4:6\"],\n            \"SpareRebuildMode\": \"Roaming\",\n            \"StripSizeBytes\": 262144,\n            \"StripeSizeBytes\": 262144,\n            \"VolumeUniqueIdentifier\": \"600508B1001C731070EA04B4FE568CFA\"\n        }\n    ],\n    \"MonitorAndPerformanceAnalysisDelaySeconds\": 60,\n    \"NoBatteryWriteCache\": \"Disabled\",\n    \"Oem\": {\n        \"Hpe\": {\n            \"@odata.type\": \"#HpeBiosExt.v2_0_0.HpeBiosExt\",\n            \"SettingsObject\": {\n                \"UnmodifiedETag\": \"W/\\\"6D952205C4D2FFFFFFFA58042590319C\\\"\"\n            }\n        }\n    },\n    \"PhysicalDrives\": [\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"4I:1:1\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        },\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"4I:1:2\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        },\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"11:4:5\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        },\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"11:4:6\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        }\n    ],\n    \"Ports\": [\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 0\n        },\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 1\n        },\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 2\n        },\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 3\n        }\n    ],\n    \"PowerModeAfterReboot\": \"MaxPerformance\",\n    \"PredictiveSpareRebuild\": \"Disabled\",\n    \"QueueDepth\": \"Automatic\",\n    \"ReadCachePercent\": 10,\n    \"RebuildPriority\": \"High\",\n    \"SurfaceScanAnalysisDelaySeconds\": 3,\n    \"SurfaceScanAnalysisPriority\": \"Idle\",\n    \"SurvivalPowerMode\": \"Disabled\",\n    \"WriteCacheBypassThresholdKiB\": 1040\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add RAID0 to existing Array",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"@Redfish.Settings\": {\n        \"@odata.type\": \"#Settings.v1_0_0.Settings\",\n        \"ETag\": \"381AFB0B\",\n        \"Messages\": [\n            {\n                \"MessageId\": \"SmartStorageMessages.2.0.0.Success\"\n            }\n        ],\n        \"SettingsObject\": {\n            \"@odata.id\": \"/redfish/v1/systems/1/smartstorageconfig/settings/\"\n        },\n        \"Time\": \"2018-10-25T14:35:07+07:00\"\n    },\n    \"@odata.context\": \"/redfish/v1/$metadata#SmartStorageConfig.SmartStorageConfig\",\n    \"@odata.etag\": \"W/\\\"63F6B36592DBCACACA955AC4D2520096\\\"\",\n    \"@odata.id\": \"/redfish/v1/systems/1/smartstorageconfig/\",\n    \"@odata.type\": \"#SmartStorageConfig.v2_0_0.SmartStorageConfig\",\n    \"CurrentParallelSurfaceScanCount\": 1,\n    \"DegradedPerformanceOptimization\": \"Disabled\",\n    \"DriveWriteCache\": \"Disabled\",\n    \"ElevatorSort\": \"Enabled\",\n    \"EncryptionConfiguration\": \"None\",\n    \"EncryptionEULA\": null,\n    \"ExpandPriority\": \"Medium\",\n    \"FlexibleLatencySchedulerSetting\": \"Default\",\n    \"Id\": \"smartstorageconfig\",\n    \"InconsistencyRepairPolicy\": \"Disabled\",\n    \"Location\": \"Slot 1\",\n    \"LocationFormat\": \"PCISlot\",\n    \"DataGuard\": \"Disabled\",\n    \"LogicalDrives\": [\n        {\n            \"Accelerator\": \"None\",\n            \"BlockSizeBytes\": 512,\n            \"CapacityBlocks\": 209712000,\n            \"CapacityGiB\": 99,\n            \"DataDrives\": [\n                \"4I:1:1\",\n                \"4I:1:2\"\n            ],\n            \"DriveLocationFormat\": \"ControllerPort:Box:Bay\",\n            \"LegacyBootPriority\": \"None\",\n            \"LogicalDriveName\": \"RAID1-1-100\",\n            \"LogicalDriveNumber\": 1,\n            \"ParityGroupCount\": 0,\n            \"Raid\": \"Raid1\",\n            \"SpareDrives\": [\n                \"11:4:6\"\n            ],\n            \"SpareRebuildMode\": \"Roaming\",\n            \"StripSizeBytes\": 262144,\n            \"StripeSizeBytes\": 262144,\n            \"VolumeUniqueIdentifier\": \"600508B1001C75FBC332295AC826FFA1\"\n        },\n        {\n           \"CapacityGiB\": 50,\n            \"DataDrives\": [\n                \"4I:1:1\",\n                \"4I:1:2\"\n            ],\n            \"LogicalDriveName\": \"RAID0-2-50\",\n            \"Raid\": \"Raid0\",\n            \"SpareDrives\": [\n                \"11:4:6\"\n            ]\n        },\n        {\n            \"Accelerator\": \"None\",\n            \"BlockSizeBytes\": 512,\n            \"CapacityBlocks\": 585871964,\n            \"CapacityGiB\": 279,\n            \"DataDrives\": [\n                \"11:4:5\"\n            ],\n            \"DriveLocationFormat\": \"ControllerPort:Box:Bay\",\n            \"LegacyBootPriority\": \"None\",\n            \"LogicalDriveName\": \"RAID0-300\",\n            \"LogicalDriveNumber\": 2,\n            \"ParityGroupCount\": 0,\n            \"Raid\": \"Raid0\",\n            \"SpareDrives\": [],\n            \"SpareRebuildMode\": null,\n            \"StripSizeBytes\": 262144,\n            \"StripeSizeBytes\": 262144,\n            \"VolumeUniqueIdentifier\": \"600508B1001CE673D92C370E4324A8D0\"\n        }\n    ],\n    \"MonitorAndPerformanceAnalysisDelaySeconds\": 60,\n    \"NoBatteryWriteCache\": null,\n    \"Oem\": {\n        \"Hpe\": {\n            \"@odata.type\": \"#HpeBiosExt.v2_0_0.HpeBiosExt\",\n            \"SettingsObject\": {\n                \"UnmodifiedETag\": \"W/\\\"D3751C0709943D3D3DDC38857834BB0A\\\"\"\n            }\n        }\n    },\n    \"PhysicalDrives\": [\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"4I:1:1\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        },\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"4I:1:2\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        },\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"11:4:5\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        },\n        {\n            \"LegacyBootPriority\": \"None\",\n            \"Location\": \"11:4:6\",\n            \"LocationFormat\": \"ControllerPort:Box:Bay\"\n        }\n    ],\n    \"Ports\": [\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 0\n        },\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 1\n        },\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 2\n        },\n        {\n            \"OperatingModeAfterReboot\": \"Mixed\",\n            \"PortIndex\": 3\n        }\n    ],\n    \"PowerModeAfterReboot\": \"MaxPerformance\",\n    \"PredictiveSpareRebuild\": \"Disabled\",\n    \"QueueDepth\": \"Automatic\",\n    \"ReadCachePercent\": 10,\n    \"RebuildPriority\": \"High\",\n    \"SurfaceScanAnalysisDelaySeconds\": 3,\n    \"SurfaceScanAnalysisPriority\": \"Idle\",\n    \"SurvivalPowerMode\": \"Disabled\",\n    \"WriteCacheBypassThresholdKiB\": 1040\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						},
+						"description": "{\n           \"CapacityGiB\": 50,\n            \"DataDrives\": [\n                \"4I:1:1\",\n                \"4I:1:2\"\n            ],\n            \"LogicalDriveName\": \"RAID0-2-50\",\n            \"Raid\": \"Raid0\",\n            \"SpareDrives\": [\n                \"11:4:6\"\n            ]\n        }"
+					},
+					"response": []
+				}
+			],
+			"description": "Create / Modify / Add storage elements ",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1a86ef4a-3d2f-4f2f-93ed-48c1c85b9e7c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3df66ac1-fabb-4cc8-9019-2f39be37108e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Delete / Remove Storage elements",
+			"item": [
+				{
+					"name": "Delete All Logical Drives and Clear Controller Config",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n \t\"Actions\": [\n \t\t{\n \t\t\t\"Action\": \"ClearConfigurationMetadata\"\n \t\t}\n \t\t],\n \t\"LogicalDrives\": [],\n    \"DataGuard\": \"Disabled\"\n }"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						},
+						"description": "PATCH \nClear All Logical Drives"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Logical Drives",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n \t\"LogicalDrives\": [],\n    \"DataGuard\": \"Disabled\"\n }"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						},
+						"description": "PATCH \nClear All Logical Drives"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a specific Logical Drive",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n   \"LogicalDrives\": [\r\n      {\r\n         \"Actions\": [\r\n         \t{\r\n         \t\t\"Action\": \"LogicalDriveDelete\"\r\n         \t\t\r\n         \t}\r\n         \t\t],\r\n         \"VolumeUniqueIdentifier\": \"600508B1001CDD72E9E29294EC62D417\"\r\n      }\r\n    ],\r\n    \"DataGuard\": \"Permissive\"\r\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						},
+						"description": "PATCH \nClear All Logical Drives"
+					},
+					"response": []
+				},
+				{
+					"name": "Clear Config Metadata",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n \t\"Actions\": [\n \t\t{\n \t\t\t\"Action\": \"ClearConfigurationMetadata\"\n \t\t}\n \t\t],\n \t\t\"DataGuard\": \"Disabled\"\n }"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						},
+						"description": "PATCH \nClear Configuration Metadata"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "21681f5a-08bc-4460-9e57-2242b584910d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "41e0eaf3-47ac-49ce-9359-588c7420b31e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
