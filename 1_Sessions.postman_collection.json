@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "d7ddd198-7dd0-4ab2-8459-fa118d0e29a4",
 		"name": "1_Sessions",
-		"description": "Create / Delete sessions",
+		"description": "Create, Delete and View iLO sessions. Use of the Postman `test` facility to capture the session Token and Session Location during the session creation.  \n\nRead the [Managing iLO sessions with Redfish](https://developer.hpe.com/blog/managing-ilo-sessions-with-redfish) article to better understand iLO session management.\n\n\n\n[Published](https://documenter.getpostman.com/view/3625509/RzfmEST5)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -225,6 +225,28 @@
 				"description": "DELETE Session"
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "fdcf0f0a-9b37-4928-820f-b291e56da7c4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f0401538-1ee2-411d-b80d-8b5445b1b70e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

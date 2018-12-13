@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "ff3a54f8-8f96-4f17-ba7d-7cb61c3d4e5e",
 		"name": "2_SmartStorage",
-		"description": "Management of HPE Smart Storage: view, create, delete disks and logical drives.\n\nThis collection can only be used against HPE Gen10 servers only.\n\nThis collection has been used to write the [Storage management with Redfish](https://developer.hpe.com/blog/storage-management-with-redfish) article.\n",
+		"description": "Management of HPE Smart Storage: view, create, delete disks and logical drives.\n\nThis collection can only be used against HPE Gen10 servers only.\n\nThis collection has been used to write the [Storage management with Redfish](https://developer.hpe.com/blog/storage-management-with-redfish) article.\n\n[Published](https://documenter.getpostman.com/view/3625509/RzfmESXR)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [

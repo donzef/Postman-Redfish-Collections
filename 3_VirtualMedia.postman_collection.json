@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "72b0e9c7-0f56-4308-9ce0-1c0a8a28dff6",
 		"name": "3_VirtualMedia",
-		"description": "This collection proposes mount and unmount Virtual drive requests using the Redfish standard and the legacy HPE Oem implementation. \n\nThe first versions of the Redfish [VirtualMedia](http://redfish.dmtf.org/schemas/v1/VirtualMedia.json) were very limited in terms of actions and properties. However, in order to propose a decent user experience, HPE implemented its own Virtual Media subsystem under the Oem sub-tree, as permitted by the Redfish standard.\n\nToday, and for backward compatibility, HPE implements both the Redfish VirtualMedia standard and its legacy Oem implementation.",
+		"description": "This collection proposes mount and unmount Virtual drive requests using the Redfish standard and the legacy HPE Oem implementation. \n\nThe first versions of the Redfish [VirtualMedia](http://redfish.dmtf.org/schemas/v1/VirtualMedia.json) were very limited in terms of actions and properties. However, in order to propose a decent user experience, HPE implemented its own Virtual Media subsystem under the Oem sub-tree, as permitted by the Redfish standard.\n\nToday, and for backward compatibility, HPE implements both the Redfish VirtualMedia standard and its legacy Oem implementation.\n\n[Published](https://documenter.getpostman.com/view/3625509/RzfmESXS)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
