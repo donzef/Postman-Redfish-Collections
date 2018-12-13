@@ -50,9 +50,17 @@ Create, Delete and View iLO sessions. Use of the Postman `test` facility to capt
 
 Read the [Managing iLO sessions with Redfish](https://developer.hpe.com/blog/managing-ilo-sessions-with-redfish) article to better understand iLO session management.
 
+[Published](https://documenter.getpostman.com/view/3625509/RzfmEST5)
+
 ### 2_SmartStorage
 
-Manage HPE Smart Array controllers. This collection has been created during the writing of the [Storage management with Redfish](https://developer.hpe.com/blog/storage-management-with-redfish) article.
+Management of HPE Smart Storage: view, create, delete disks and logical drives.
+
+This collection can only be used against HPE Gen10 servers only.
+
+This collection has been used to write the [Storage management with Redfish](https://developer.hpe.com/blog/storage-management-with-redfish) article.
+
+[Published](https://documenter.getpostman.com/view/3625509/RzfmESXR)
 
 ### 3_VirtualMedia
 
@@ -61,3 +69,5 @@ This collection proposes mount and unmount Virtual drive requests using the Redf
 The first versions of the Redfish [VirtualMedia](http://redfish.dmtf.org/schemas/v1/VirtualMedia.json) were very limited in terms of actions and properties. However, in order to propose a decent user experience, HPE implemented its own Virtual Media subsystem under the Oem sub-tree, as permitted by the Redfish standard.
 
 Today, and for backward compatibility, HPE implements both the Redfish VirtualMedia standard and its legacy Oem implementation.
+
+[Published](https://documenter.getpostman.com/view/3625509/RzfmESXS)
