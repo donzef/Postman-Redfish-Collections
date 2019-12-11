@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "dbe6e11f-c44a-41e9-810c-05d204cf9eb5",
+		"name": "4_PersistentMemory",
+		"description": "Persistent Memory / Optane DC PMEM collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tasks List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TaskService/Tasks/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TaskService",
+						"Tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{iloURI}}/redfish/v1/TaskService/Tasks/137/",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TaskService/Tasks/135/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TaskService",
+						"Tasks",
+						"135",
+						""
+					]
+				},
+				"description": "Delete a Task"
+			},
+			"response": []
+		},
+		{
+			"name": "Proc1 PMEM configuration",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"MemoryDomains",
+						"PROC1MemoryDomain",
+						"MemoryChunks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of DIMMs present in the System",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "374089c2-508f-4616-b36b-eedc921f6294",
+						"exec": [
+							"// Make sure we'll work on a suitable response.",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response includes MemoryType\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"MemoryType\", \"Name\");",
+							"});",
+							"",
+							"// Extract values from the response.",
+							"let DimmName = pm.response.json().Members[0.Name];",
+							"let MemoryType = pm.response.json().Members;",
+							"",
+							"// Create Postman environment variables",
+							"pm.environment.set('DimmName', DimmName);",
+							"pm.environment.set('MemoryType', MemoryType);",
+							"",
+							"// Print keys and corresponding values on the Postman Console.",
+							"console.log(\"DimmName:\",  pm.variables.get(\"DimmName\"));",
+							"console.log(\"MemoryType:\",  pm.variables.get(\"MemoryType\"));",
+							"",
+							"",
+							"//pm.environment.unset('PostState', PostState);",
+							"//pm.environment.unset('SmartArrayDiscovery', SmartArrayDiscovery);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Memory?$expand=.",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Memory"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "."
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -47,10 +47,6 @@
 						"value": "application/json"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/SessionService/Sessions/",
 					"host": [
@@ -75,15 +71,20 @@
 					"listen": "test",
 					"script": {
 						"id": "1eb9a163-e871-4ec0-b843-82c96d7d14f4",
-						"type": "text/javascript",
 						"exec": [
 							"pm.environment.set(\"Token\", postman.getResponseHeader(\"X-Auth-Token\"));",
 							"pm.environment.set(\"SessionLocation\", postman.getResponseHeader(\"Location\"));",
 							"",
 							"",
-							"console.log(\"Token:\", pm.variables.get(\"Token\")); ",
-							"console.log(\"SessionLocation:\", pm.variables.get(\"SessionLocation\")); "
-						]
+							"//console.log(\"Token:\", pm.variables.get(\"Token\")); ",
+							"//console.log(\"SessionLocation:\", pm.variables.get(\"SessionLocation\")); ",
+							"",
+							"// Environment Cleanup",
+							"pm.environment.unset('PowerState'); ",
+							"pm.environment.unset('PostState');  ",
+							"pm.environment.unset('SmartArrayDiscovery');"
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -104,7 +105,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"UserName\": \"{{iloUser}}\",\n\"Password\": \"{{iloPasswd}}\"}\n"
+					"raw": "{\n\t\"UserName\": \"{{iloUser}}\",\n\t\"Password\": \"{{iloPasswd}}\"\n\t\n}\n"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/SessionService/Sessions/",
@@ -156,10 +157,6 @@
 						"value": "{{Token}}"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/SessionService/Sessions/",
 					"host": [
@@ -187,7 +184,14 @@
 						"exec": [
 							"pm.test(\"Body matches string\", function () {",
 							"    pm.expect(pm.response.text()).to.include(\"Success\");",
-							"});"
+							"});",
+							"",
+							"// Environment Cleanup",
+							"pm.environment.unset('PowerState'); ",
+							"pm.environment.unset('PostState');  ",
+							"pm.environment.unset('SmartArrayDiscovery');",
+							"pm.environment.unset('Token');",
+							"pm.environment.unset('SessionLocation');"
 						],
 						"type": "text/javascript"
 					}

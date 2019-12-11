@@ -7,6 +7,50 @@
 	},
 	"item": [
 		{
+			"name": "StandardDvdMount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\t\"Image\": \"http://172.22.103.1/MediaKits/Media/ISOs/SPP.iso\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/Actions/VirtualMedia.InsertMedia/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"VirtualMedia",
+						"2",
+						"Actions",
+						"VirtualMedia.InsertMedia",
+						""
+					]
+				},
+				"description": "Mount a remote .ISO file via HTTP using a standard POST request toward an Action target.\n\nNOTE: if you want the server to boot on this Virtual Media during the next reboot, you have to send a separate PATCH request. See the BootOnNextServerReset request in this collection."
+			},
+			"response": []
+		},
+		{
 			"name": "CD/DvD Virtual Media",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -48,50 +92,6 @@
 					]
 				},
 				"description": "Retrieves the CD/DvD Virtual Media properties.\n\nNote the standard \"Actions\" and the legacy \"Oem.Hpe.Actions\" properties. \n\nNote as well that the BootOnNextReset boolean is under the Oem.Hpe sub-tree."
-			},
-			"response": []
-		},
-		{
-			"name": "StandardDvdMount",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\n\t\"Image\": \"http://172.22.103.1/MediaKits/Media/ISOs/SPP.iso\"\n}"
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/Actions/VirtualMedia.InsertMedia/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Managers",
-						"1",
-						"VirtualMedia",
-						"2",
-						"Actions",
-						"VirtualMedia.InsertMedia",
-						""
-					]
-				},
-				"description": "Mount a remote .ISO file via HTTP using a standard POST request toward an Action target.\n\nNOTE: if you want the server to boot on this Virtual Media during the next reboot, you have to send a separate PATCH request. See the BootOnNextServerReset request in this collection."
 			},
 			"response": []
 		},
@@ -138,6 +138,50 @@
 			"response": []
 		},
 		{
+			"name": "StandardDvdUnmount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/Actions/VirtualMedia.EjectMedia/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"VirtualMedia",
+						"2",
+						"Actions",
+						"VirtualMedia.EjectMedia",
+						""
+					]
+				},
+				"description": "POST request toward an Action target as defined by Redfish to unmount a CD or DvD Virtual Media.\n\nNote that this requests automatically resets to false the BootOnNextServerReset boolean, if needed."
+			},
+			"response": []
+		},
+		{
 			"name": "LegacyDvdMount1",
 			"request": {
 				"method": "PATCH",
@@ -176,50 +220,6 @@
 					]
 				},
 				"description": "Legacy Dvd Mount + Boot On Next Server reset\n\nWith this PATCH request toward the Oem.Hpe subtree we can perform 2 actions at one time: mount a Virtual DvD and set the BootOnNextServerReset boolean to true.\n\nNote that the second action will be successful only if the server is in the Off or FinishedPost state.\n\nRead the [Master the Redfish Server States](https://developer.hpe.com/blog/master-the-redfish-server-states-to-improve-your-monitoring-and-manageme) article for more information on the server states."
-			},
-			"response": []
-		},
-		{
-			"name": "StandardDvdUnmount",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"Action\":  \"VirtualMedia.EjectMedia\"\n}"
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/Actions/VirtualMedia.EjectMedia/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Managers",
-						"1",
-						"VirtualMedia",
-						"2",
-						"Actions",
-						"VirtualMedia.EjectMedia",
-						""
-					]
-				},
-				"description": "POST request toward an Action target as defined by Redfish to unmount a CD or DvD Virtual Media.\n\nNote that this requests automatically resets to false the BootOnNextServerReset boolean, if needed."
 			},
 			"response": []
 		},
@@ -290,10 +290,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Action\":  \"HpeiLOVirtualMedia.EjectVirtualMedia\"\n}"
+					"raw": "{\n\t\n}"
 				},
 				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/Actions/Oem/Hpe/HpeiLOVirtualMedia.InsertVirtualMedia/",
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/VirtualMedia/2/Actions/Oem/Hpe/HpeiLOVirtualMedia.EjectVirtualMedia/",
 					"host": [
 						"{{iloURI}}"
 					],
@@ -307,7 +307,7 @@
 						"Actions",
 						"Oem",
 						"Hpe",
-						"HpeiLOVirtualMedia.InsertVirtualMedia",
+						"HpeiLOVirtualMedia.EjectVirtualMedia",
 						""
 					]
 				},

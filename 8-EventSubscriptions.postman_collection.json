@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "a6236455-784d-4027-8a97-1f413e17f4f7",
+		"name": "8-EventSubscriptions",
+		"description": "TBD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EventSubscriptions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/EventService/Subscriptions/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"EventService",
+						"Subscriptions",
+						""
+					]
+				},
+				"description": "Get the list of all the Redfish services, at root level"
+			},
+			"response": []
+		},
+		{
+			"name": "Gen10: Event Subscription",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9283e1d2-8bb6-4097-b382-68a3a0c9de74",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Destination\": \"https://{{EventListener}}/RedfishEvents/EventReceiver.php\",\r\n\t\"EventTypes\": [\r\n\t\t\"StatusChange\",\r\n\t\t\"ResourceUpdated\",\r\n\t\t\"ResourceAdded\",\r\n\t\t\"ResourceRemoved\",\r\n\t\t\"Alert\"\r\n\t\t],\r\n\t\t\"HttpHeaders\": {\r\n\t\t\t\"Content-Type\": \"Application/JSON\",\r\n\t\t\t\"OData-Version\": \"4.0\"\r\n\t\t\t\r\n\t\t},\r\n\t\t\"Context\": \"Public\",\r\n\t\t\"Oem\": {\r\n\t\t\t\"Hpe\": {\r\n\t\t\t\t\"DeliveryRetryIntervalInSeconds\":30,\r\n\t\t\t\t\"RequestedMaxEventsToQueue\": 20,\r\n\t\t\t\t\"DeliveryRetryAttempts\": 5,\r\n\t\t\t\t\"RetireOldEventInMinutes\": 10\r\n\t\t\t\t\r\n\t\t\t}\r\n\t\t}\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/EventService/Subscriptions/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"EventService",
+						"Subscriptions",
+						""
+					]
+				},
+				"description": "Event Subscription on a Gen10 server:\n\nDifference with Gen9:\nRemoved TTLCount and TTLUnit\n\nReplaced Oem/hp with Oem/hpe"
+			},
+			"response": []
+		},
+		{
+			"name": "Gen9: Event Subscription",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9283e1d2-8bb6-4097-b382-68a3a0c9de74",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"Destination\": \"https://{{EventListener}}/RedfishEvents/EventReceiver.php\",\r\n\"EventTypes\": [\r\n    \"StatusChange\",\r\n     \"ResourceUpdated\",\r\n     \"ResourceAdded\",\r\n      \"ResourceRemoved\",\r\n      \"Alert\"\r\n],\r\n\"HttpHeaders\": {\r\n    \"Content-Type\": \"Application/JSON\",\r\n    \"OData-Version\": \"4.0\"\r\n},\r\n\"TTLCount\": 14400,\r\n\"TTLUnits\": \"minutes\",\r\n\"Context\": \"context string\",\r\n\"Oem\": {\r\n    \"Hp\": {\r\n        \"DeliveryRetryIntervalInSeconds\": 30,\r\n        \"RequestedMaxEventsToQueue\": 20,\r\n        \"DeliveryRetryAttempts\": 5,\r\n        \"RetireOldEventInMinutes\": 10\r\n    }\r\n}}\r\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/EventService/EventSubscriptions/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"EventService",
+						"EventSubscriptions",
+						""
+					]
+				},
+				"description": "Event Subscription on a Gen9 server"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Event",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9283e1d2-8bb6-4097-b382-68a3a0c9de74",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"EventType\": \"ResourceAdded\",\r\n  \"EventID\": \"myEventId\",\r\n  \"EventTimestamp\": \"top-of-the-hour\",\r\n  \"Severity\": \"OK\",\r\n  \"Message\": \"This is a test message\",\r\n  \"MessageID\": \"iLOEvents.0.9.ResourceStatusChanged\",\r\n  \"MessageArgs\": [ \"arg0\", \"arg1\" ],\r\n  \"OriginOfCondition\": \"/redfish/v1/Chassis/1/FooBar\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/EventService/Actions/EventService.SubmitTestEvent",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"EventService",
+						"Actions",
+						"EventService.SubmitTestEvent"
+					]
+				},
+				"description": "TBD"
+			},
+			"response": []
+		},
+		{
+			"name": "Event Subscription",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/EventService/Subscriptions/33",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"EventService",
+						"Subscriptions",
+						"33"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

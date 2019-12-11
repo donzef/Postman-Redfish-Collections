@@ -1,0 +1,552 @@
+{
+	"info": {
+		"_postman_id": "04436f16-09ae-4d44-8c44-42d4c3fb4b2f",
+		"name": "7-Bios",
+		"description": "Get and set of various Bios properties.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Bios current attributes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Bios",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Systems/?$expand=.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": false
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"disabled": false
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/?$expand=.",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								""
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "."
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Allow",
+							"value": "GET, HEAD",
+							"name": "Allow",
+							"description": "Valid actions for a specified resource. To be used for a 405 Method not allowed"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 08 Aug 2018 14:20:55 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"C09DAB66\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "Link",
+							"value": "</redfish/v1/SchemaStore/en/ComputerSystemCollection.json/>; rel=describedby",
+							"name": "Link",
+							"description": "Used to express a typed relationship with another resource, where the relation type is defined by RFC 5988"
+						},
+						{
+							"key": "OData-Version",
+							"value": "4.0",
+							"name": "OData-Version",
+							"description": "Custom header"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "sameorigin",
+							"name": "X-Frame-Options",
+							"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+						},
+						{
+							"key": "X_HP-CHRP-Service-Version",
+							"value": "1.0.3",
+							"name": "X_HP-CHRP-Service-Version",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"body": "{\"@odata.context\":\"/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection\",\"@odata.etag\":\"W/\\\"C09DAB66\\\"\",\"@odata.id\":\"/redfish/v1/Systems/\",\"@odata.type\":\"#ComputerSystemCollection.ComputerSystemCollection\",\"Description\":\"Computer Systems view\",\"Name\":\"Computer Systems\",\"Members\":[{\"@odata.context\":\"/redfish/v1/$metadata#ComputerSystem.ComputerSystem\",\"@odata.id\":\"/redfish/v1/Systems/1/\",\"@odata.type\":\"#ComputerSystem.v1_4_0.ComputerSystem\",\"Id\":\"1\",\"Actions\":{\"#ComputerSystem.Reset\":{\"ResetType@Redfish.AllowableValues\":[\"On\",\"ForceOff\",\"ForceRestart\",\"Nmi\",\"PushPowerButton\"],\"target\":\"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/\"}},\"AssetTag\":\"\",\"Bios\":{\"@odata.id\":\"/redfish/v1/systems/1/bios/\"},\"BiosVersion\":\"U30 v1.42 (06/20/2018)\",\"Boot\":{\"BootSourceOverrideEnabled\":\"Disabled\",\"BootSourceOverrideMode\":\"UEFI\",\"BootSourceOverrideTarget\":\"None\",\"BootSourceOverrideTarget@Redfish.AllowableValues\":[\"None\",\"Cd\",\"Hdd\",\"Usb\",\"SDCard\",\"Utilities\",\"Diags\",\"BiosSetup\",\"Pxe\",\"UefiShell\",\"UefiHttp\",\"UefiTarget\"],\"UefiTargetBootSourceOverride\":\"None\",\"UefiTargetBootSourceOverride@Redfish.AllowableValues\":[\"HD(1,GPT,0C1B39A7-2EE6-431B-9D48-1DF9A6D04D98,0x800,0x64000)/\\\\EFI\\\\redhat\\\\shimx64.efi\",\"Fv(CDBB7B35-6833-4ED6-9AB2-57D2ACDDF6F0)/FvFile(C57AD6B7-0515-40A8-9D21-551652854E37)\",\"PciRoot(0x0)/Pci(0x14,0x0)/USB(0x13,0x0)\",\"UsbClass(0xFFFF,0xFFFF,0xFF,0xFF,0xFF)\",\"PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x0)\",\"PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x2,0x4000)\"]},\"EthernetInterfaces\":{\"@odata.id\":\"/redfish/v1/Systems/1/EthernetInterfaces/\"},\"HostName\":\"hst380g10\",\"IndicatorLED\":\"Blinking\",\"Links\":{\"ManagedBy\":[{\"@odata.id\":\"/redfish/v1/Managers/1/\"}],\"Chassis\":[{\"@odata.id\":\"/redfish/v1/Chassis/1/\"}]},\"LogServices\":{\"@odata.id\":\"/redfish/v1/Systems/1/LogServices/\"},\"Manufacturer\":\"HPE\",\"Memory\":{\"@odata.id\":\"/redfish/v1/Systems/1/Memory/\"},\"MemorySummary\":{\"Status\":{\"HealthRollup\":\"OK\"},\"TotalSystemMemoryGiB\":768},\"Model\":\"ProLiant DL380 Gen10\",\"Name\":\"Computer System\",\"NetworkInterfaces\":{\"@odata.id\":\"/redfish/v1/Systems/1/NetworkInterfaces/\"},\"Oem\":{\"Hpe\":{\"@odata.context\":\"/redfish/v1/$metadata#HpeComputerSystemExt.HpeComputerSystemExt\",\"@odata.type\":\"#HpeComputerSystemExt.v2_5_0.HpeComputerSystemExt\",\"Actions\":{\"#HpeComputerSystemExt.PowerButton\":{\"PushType@Redfish.AllowableValues\":[\"Press\",\"PressAndHold\"],\"target\":\"/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.PowerButton/\"},\"#HpeComputerSystemExt.SystemReset\":{\"ResetType@Redfish.AllowableValues\":[\"ColdBoot\",\"AuxCycle\"],\"target\":\"/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SystemReset/\"}},\"AggregateHealthStatus\":{\"AgentlessManagementService\":\"Unavailable\",\"BiosOrHardwareHealth\":{\"Status\":{\"Health\":\"OK\"}},\"FanRedundancy\":\"Redundant\",\"Fans\":{\"Status\":{\"Health\":\"OK\"}},\"Memory\":{\"Status\":{\"Health\":\"OK\"}},\"Network\":{\"Status\":{\"Health\":\"OK\"}},\"PowerSupplies\":{\"PowerSuppliesMismatch\":false,\"Status\":{\"Health\":\"OK\"}},\"PowerSupplyRedundancy\":\"NonRedundant\",\"Processors\":{\"Status\":{\"Health\":\"OK\"}},\"Storage\":{\"Status\":{\"Health\":\"Warning\"}},\"Temperatures\":{\"Status\":{\"Health\":\"OK\"}}},\"Bios\":{\"Backup\":{\"Date\":\"02/01/2018\",\"Family\":\"U30\",\"VersionString\":\"U30 v1.32 (02/01/2018)\"},\"Current\":{\"Date\":\"06/20/2018\",\"Family\":\"U30\",\"VersionString\":\"U30 v1.42 (06/20/2018)\"},\"UefiClass\":2},\"CurrentPowerOnTimeSeconds\":6720,\"DeviceDiscoveryComplete\":{\"AMSDeviceDiscovery\":\"NoAMS\",\"DeviceDiscovery\":\"vMainDeviceDiscoveryComplete\",\"SmartArrayDiscovery\":\"Complete\"},\"EndOfPostDelaySeconds\":null,\"IntelligentProvisioningAlwaysOn\":true,\"IntelligentProvisioningIndex\":8,\"IntelligentProvisioningLocation\":\"System Board\",\"IntelligentProvisioningVersion\":\"3.20.154\",\"IsColdBooting\":false,\"Links\":{\"SUT\":{\"@odata.id\":\"/redfish/v1/systems/1/hpsut/\"},\"HpeIpProvider\":{\"@odata.id\":\"/redfish/v1/systems/1/hpeip/\"},\"PCIDevices\":{\"@odata.id\":\"/redfish/v1/Systems/1/PCIDevices/\"},\"PCISlots\":{\"@odata.id\":\"/redfish/v1/Systems/1/PCISlots/\"},\"NetworkAdapters\":{\"@odata.id\":\"/redfish/v1/Systems/1/BaseNetworkAdapters/\"},\"SmartStorage\":{\"@odata.id\":\"/redfish/v1/Systems/1/SmartStorage/\"},\"USBPorts\":{\"@odata.id\":\"/redfish/v1/Systems/1/USBPorts/\"},\"USBDevices\":{\"@odata.id\":\"/redfish/v1/Systems/1/USBDevices/\"},\"EthernetInterfaces\":{\"@odata.id\":\"/redfish/v1/Systems/1/EthernetInterfaces/\"}},\"PCAPartNumber\":\"\",\"PCASerialNumber\":\"\",\"PostDiscoveryCompleteTimeStamp\":\"2018-08-08T14:12:45Z\",\"PostDiscoveryMode\":null,\"PostMode\":null,\"PostState\":\"FinishedPost\",\"PowerAllocationLimit\":500,\"PowerAutoOn\":\"Restore\",\"PowerOnDelay\":\"Minimum\",\"PowerOnMinutes\":157805,\"PowerRegulatorMode\":\"Dynamic\",\"PowerRegulatorModesSupported\":[\"OSControl\",\"Dynamic\",\"Max\",\"Min\"],\"ProcessorJitterControl\":{\"Mode\":\"Disabled\"},\"SMBIOS\":{\"extref\":\"/smbios\"},\"ServerFQDN\":\"\",\"SmartStorageConfig\":[{\"@odata.id\":\"/redfish/v1/systems/1/smartstorageconfig/\"}],\"VirtualProfile\":\"Inactive\"}},\"PowerState\":\"On\",\"ProcessorSummary\":{\"Count\":1,\"Model\":\"Intel(R) Genuine processor\",\"Status\":{\"HealthRollup\":\"OK\"}},\"Processors\":{\"@odata.id\":\"/redfish/v1/Systems/1/Processors/\"},\"SKU\":\"125629-001\",\"SecureBoot\":{\"@odata.id\":\"/redfish/v1/Systems/1/SecureBoot/\"},\"SerialNumber\":\"7CE635P01D\",\"Status\":{\"Health\":\"Warning\",\"State\":\"Enabled\"},\"Storage\":{\"@odata.id\":\"/redfish/v1/Systems/1/Storage/\"},\"SystemType\":\"Physical\",\"TrustedModules\":[{\"Oem\":{\"Hpe\":{\"@odata.context\":\"/redfish/v1/$metadata#HpeTrustedModuleExt.HpeTrustedModuleExt\",\"@odata.type\":\"#HpeTrustedModuleExt.v2_0_0.HpeTrustedModuleExt\"}},\"Status\":{\"State\":\"Absent\"}}],\"UUID\":\"36353231-3932-4337-4536-333550303144\"}],\"Members@odata.count\":1}"
+				}
+			]
+		},
+		{
+			"name": "PATCH Bios IPv4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Attributes\": {\n\t\t\"Dhcpv4\": \"Disabled\",\n\t\t\t\"Ipv4Address\": \"192.168.1.82\",\n    \t\"Ipv4Gateway\": \"192.168.1.1\",\n    \t\"Ipv4PrimaryDNS\": \"192.168.1.1\",\n    \t\"UrlBootFile\": \"http://192.168.1.254/MediaKits/Media/BootISOs/hst380g10-rhel75.iso\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Bios",
+						"Settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gen10: Change Bios Admin params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Attributes\": {\n\t\t\"AdminName\": \"Toto Content\",\n\t\t\"AdminEmail\": \"toto.content@koulapic.com\",\n\t\t\"AdminPhone\": \"+330678901234\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Bios",
+						"Settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gen9: Change Bios Admin params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"AdminName\": \"Toto Content\",\n\t\t\"AdminEmail\": \"toto.content@koulapic.com\",\n\t\t\"AdminPhone\": \"+330678901234\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Bios",
+						"Settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save User Defaults",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Attributes\": {\n\t\t\"SaveUserDefaults\": \"Yes\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Bios",
+						"Settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Swap ROM",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Attributes\": {\n\t\t\"RomSelection\": \"BackupRom\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Bios",
+						"Settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bios Settings",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/systems/1/bios/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"systems",
+						"1",
+						"bios",
+						"Settings",
+						""
+					]
+				},
+				"description": "Retrieve Bios settings to be loaded at next reboot if different from the current settings."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bios BaseConfigs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/systems/1/bios/BaseConfigs/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"systems",
+						"1",
+						"bios",
+						"BaseConfigs",
+						""
+					]
+				},
+				"description": "Retrieve Bios settings to be restored if desired. This Base Configuration is also called Bios Default settings in the documentation."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "957db8f8-b8d0-4c1e-962b-23082273e09b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f5a0fded-87ef-4a29-88fc-003dba8519da",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "44e9f20e-6450-4b91-bb49-d482591df0bf",
+		"name": "5_iLO_Users_Management",
+		"description": "Get, Create, Patch iLO Users.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All iLO Users",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demopaq",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AccountService/Accounts/?$expand=.",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AccountService",
+						"Accounts",
+						""
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "."
+						}
+					]
+				},
+				"description": "Retrieves all iLO Users using the OData $expand syntax"
+			},
+			"response": []
+		},
+		{
+			"name": "New iLO user-1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserName\": \"jsmith\",\r\n    \"Password\": \"passwordexample\",\r\n    \"RoleId\": \"Operator\"\r\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AccountService/Accounts/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AccountService",
+						"Accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New iLO user-2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserName\": \"jsmith\",\r\n    \"Password\": \"passwordexample\",\r\n    \"Oem\": {\r\n        \"Hpe\": {\r\n            \"LoginName\": \"Director of IT\",\r\n            \"Privileges\": {\r\n                \"LoginPriv\": true,\r\n                \"VirtualMediaPriv\": true,\r\n                \"VirtualPowerAndResetPriv\": true\r\n            }\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AccountService/Accounts/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AccountService",
+						"Accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify iLO user",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserName\": \"johndoeuf\",\r\n    \"Password\": \"PasswordPassword\",\r\n    \"Oem\": {\r\n        \"Hpe\": {\r\n            \"LoginName\": \"Director of IT\",\r\n            \"Privileges\": {\r\n                \"LoginPriv\": true,\r\n                \"VirtualMediaPriv\": false,\r\n                \"VirtualPowerAndResetPriv\": false\r\n            }\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AccountService/Accounts/12/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AccountService",
+						"Accounts",
+						"12",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iLO User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AccountService/Accounts/11/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AccountService",
+						"Accounts",
+						"11",
+						""
+					]
+				},
+				"description": "Delete specific iLO User"
+			},
+			"response": []
+		}
+	]
+}

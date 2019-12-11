@@ -1,0 +1,674 @@
+{
+	"info": {
+		"_postman_id": "a1e3475a-6315-4be2-9139-6704d92262e3",
+		"name": "999_Etc",
+		"description": "Requests not being part of any other collections.\n\nPay attention to the States and Device Discovery request and its `test` javascript used to display the PostState and the SmartArrayDiscovery properties.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Root Services",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						""
+					]
+				},
+				"description": "Retrieves Redfish root services."
+			},
+			"response": []
+		},
+		{
+			"name": "Power Off Server",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\t\"ResetType\": \"ForceOff\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Actions",
+						"ComputerSystem.Reset",
+						""
+					]
+				},
+				"description": "Force Power Off the remote server"
+			},
+			"response": []
+		},
+		{
+			"name": "Power On Server",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\t\"ResetType\": \"On\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Actions",
+						"ComputerSystem.Reset",
+						""
+					]
+				},
+				"description": "Force Power Off the remote server"
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Server",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\t\"ResetType\": \"ForceRestart\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Actions",
+						"ComputerSystem.Reset",
+						""
+					]
+				},
+				"description": "Force Power Off the remote server"
+			},
+			"response": []
+		},
+		{
+			"name": "iLO5-AuxPowerCycle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"ResetType\": \"AuxCycle\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SystemReset/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Actions",
+						"Oem",
+						"Hpe",
+						"HpeComputerSystemExt.SystemReset",
+						""
+					]
+				},
+				"description": "Force Power Off the remote server"
+			},
+			"response": []
+		},
+		{
+			"name": "iLO4-AuxPowerCycle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"Action\": \"SystemReset\", \r\n \"ResetType\": \"AuxCycle\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/Oem/Hp/ComputerSystemExt.SystemReset/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Actions",
+						"Oem",
+						"Hp",
+						"ComputerSystemExt.SystemReset",
+						""
+					]
+				},
+				"description": "Force Power Off the remote server"
+			},
+			"response": []
+		},
+		{
+			"name": "PowerPostStates",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8df92e20-5ab7-4c11-b056-cf22ca3bc3c7",
+						"exec": [
+							"// Make sure we'll work on a suitable response.",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response includes Oem\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"Oem\");",
+							"});",
+							"",
+							"// Extract values from the response.",
+							"let PowerState = pm.response.json().PowerState;",
+							"let PostState = pm.response.json().Oem.Hpe.PostState;",
+							"let DeviceDiscoveryComplete = pm.response.json().Oem.Hpe.DeviceDiscoveryComplete;",
+							"let SmartArrayDiscovery = DeviceDiscoveryComplete.SmartArrayDiscovery;",
+							"",
+							"// Create Postman environment variables",
+							"pm.environment.set('PowerState', PowerState);",
+							"pm.environment.set('PostState', PostState);",
+							"pm.environment.set('SmartArrayDiscovery', SmartArrayDiscovery);",
+							"",
+							"// Print keys and corresponding values on the Postman Console.",
+							"console.log(\"PowerState:\",  pm.variables.get(\"PowerState\"));",
+							"console.log(\"PostState:\",  pm.variables.get(\"PostState\"));",
+							"//console.log(\"DeviceDiscoveryComplete\",DeviceDiscoveryComplete);",
+							"console.log(\"SmartArrayDiscovery\", SmartArrayDiscovery);",
+							"",
+							"//pm.environment.unset('PostState', PostState);",
+							"pm.environment.unset('SmartArrayDiscovery', SmartArrayDiscovery);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						""
+					]
+				},
+				"description": "Retrieves PowerState in environmnet variable {{PowerState}}"
+			},
+			"response": []
+		},
+		{
+			"name": "SecureBoot",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/SecureBoot/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"SecureBoot",
+						""
+					]
+				},
+				"description": "Get Secureboot settings"
+			},
+			"response": []
+		},
+		{
+			"name": "SecureBoot Enabled",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"SecureBootEnable\": false\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/SecureBoot/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"SecureBoot",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iLO NetworkServices",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/NetworkService/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"NetworkService",
+						""
+					]
+				},
+				"description": "Retrieves iLO network services (i.e. RemoteSyslog, AlertMail...)"
+			},
+			"response": []
+		},
+		{
+			"name": "RemoteSyslogServer",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Oem\": {\n        \"Hpe\": {\n\t\t\t\"RemoteSyslogServer\": \"10.6.7.8; 10.8.7.6\"\n        }\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/NetworkService/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"NetworkService",
+						""
+					]
+				},
+				"description": "PATCH the RemoteSyslogServer list"
+			},
+			"response": []
+		},
+		{
+			"name": "Memory",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/systems/1/memory",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"systems",
+						"1",
+						"memory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tasks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TaskService/Tasks/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TaskService",
+						"Tasks",
+						""
+					]
+				},
+				"description": "Get Tasks"
+			},
+			"response": []
+		},
+		{
+			"name": "System/ComputerSystem",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET with ?only OpenAPI filter",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis?only",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis"
+					],
+					"query": [
+						{
+							"key": "only",
+							"value": null
+						}
+					]
+				},
+				"description": "OpenAPI conformance: If a resource has one and only one element, the ?only parameter returns the content of this single element.\n\nIf a resource has more than one element the ?only parameter returns the list of all the elements."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ff41c0f6-3f8b-4a62-93d1-23c09f5a1a13",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bc2c72f8-a9ca-4dca-9937-f10abd5f1ed4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

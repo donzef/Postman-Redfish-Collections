@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "106a0a44-91d6-4917-a8ac-f026d2979b01",
+		"name": "9-Telemetry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Telemetry Service entry point",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TelemetryService/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TelemetryService",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Telemetry Metric Reports",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TelemetryService/MetricReports/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TelemetryService",
+						"MetricReports",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10 mn Telemetry CPU utilization ",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TelemetryService/MetricReports/CPUUtilCustom1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TelemetryService",
+						"MetricReports",
+						"CPUUtilCustom1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CPU Utilization Triggers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TelemetryService/Triggers/CPUUtilTriggers/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TelemetryService",
+						"Triggers",
+						"CPUUtilTriggers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change CPU Utilization Triggers",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"NumericThresholds\": {\r\n        \"LowerCritical\": {\r\n        \t\"DwellTime\": \"PT20S\",\r\n            \"Reading\": 2\r\n        },\r\n        \"UpperCritical\": {\r\n        \t\"DwellTime\": \"PT20S\",\r\n            \"Reading\": 72\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TelemetryService/Triggers/CPUUtilTriggers/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TelemetryService",
+						"Triggers",
+						"CPUUtilTriggers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Trigger Action",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"type": "text",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t    \"TriggerActions\": [\r\n        \"RedfishEvent\"\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TelemetryService/Triggers/CPUUtilTriggers/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TelemetryService",
+						"Triggers",
+						"CPUUtilTriggers",
+						""
+					]
+				},
+				"description": "Change Trigger Action from LogtoLogService to RedfishEvent"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
