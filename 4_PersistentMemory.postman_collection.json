@@ -44,6 +44,43 @@
 			"response": []
 		},
 		{
+			"name": "Tasks List Copy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TaskService/Tasks/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TaskService",
+						"Tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "{{iloURI}}/redfish/v1/TaskService/Tasks/137/",
 			"request": {
 				"method": "DELETE",

@@ -93,6 +93,51 @@
 			"response": []
 		},
 		{
+			"name": "IML entries",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/LogServices/IML/Entries/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"LogServices",
+						"IML",
+						"Entries",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Add SNMP Alert Destination",
 			"request": {
 				"method": "POST",
@@ -786,6 +831,128 @@
 						"Managers",
 						"1",
 						"DateTime",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set NTP Servers",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"StaticNTPServers\": [\"192.168.0.99\", \"16.31.87.40\"]}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/DateTime/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"DateTime",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iLO4 Set DomainName",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"Oem\": {\r\n        \"Hp\": {\r\n            \"DomainName\": \"fdz.etc.fr.comm.hpecorp.net\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"EthernetInterfaces",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iLO5 Set DomainName",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"Oem\": {\r\n        \"Hpe\": {\r\n        \t\"DHCPv6\": {\r\n                \"StatefulModeEnabled\": false,\r\n                \"StatelessModeEnabled\": false,\r\n                \"UseDNSServers\": false,\r\n                \"UseDomainName\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseRapidCommit\": false\r\n            },\r\n            \"DomainName\": \"\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"EthernetInterfaces",
+						"1",
 						""
 					]
 				}

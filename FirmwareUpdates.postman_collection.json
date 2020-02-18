@@ -1,0 +1,339 @@
+{
+	"info": {
+		"_postman_id": "1c2df68b-e005-4a0a-94bc-a4a6deaecf30",
+		"name": "FirmwareUpdates",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Firmware Collections",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/FirmwareInventory",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						"FirmwareInventory"
+					]
+				},
+				"description": "List all collection of all firmware components"
+			},
+			"response": []
+		},
+		{
+			"name": "Expanded all firmware collections",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/FirmwareInventory?$expand=.",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						"FirmwareInventory"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "."
+						}
+					]
+				},
+				"description": "A single GET to retrieve all the details of all firmware in the system"
+			},
+			"response": []
+		},
+		{
+			"name": "Graceful Shutdown",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\t\"ResetType\": \"GracefulShutdown\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Actions",
+						"ComputerSystem.Reset",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SimpleUpdate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ImageURI\": \"http://172.16.50.100/Kits/firmwares/U32_2.04_04_18_2019.signed.flash\"\n}\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						"Actions",
+						"UpdateService.SimpleUpdate",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tasks List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TaskService/Tasks/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TaskService",
+						"Tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Power On Server Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\t\"ResetType\": \"On\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Actions",
+						"ComputerSystem.Reset",
+						""
+					]
+				},
+				"description": "Force Power Off the remote server"
+			},
+			"response": []
+		},
+		{
+			"name": "iLO Repository content",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/ComponentRepository/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						"ComponentRepository",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateService locations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						""
+					]
+				},
+				"description": "TBD"
+			},
+			"response": []
+		}
+	]
+}

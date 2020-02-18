@@ -111,6 +111,60 @@
 			"response": []
 		},
 		{
+			"name": "Gen10: Minimal Event Subscription",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9283e1d2-8bb6-4097-b382-68a3a0c9de74",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Destination\": \"https://{{EventListener}}/RedfishEvents/EventReceiver.php\",\r\n\t\"EventTypes\": [\r\n\t\t\"StatusChange\",\r\n\t\t\"ResourceUpdated\",\r\n\t\t\"ResourceAdded\",\r\n\t\t\"ResourceRemoved\",\r\n\t\t\"Alert\"\r\n\t\t],\r\n\t\t\"Context\": \"Public\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/EventService/Subscriptions/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"EventService",
+						"Subscriptions",
+						""
+					]
+				},
+				"description": "Event Subscription on a Gen10 server:\n\nDifference with Gen9:\nRemoved TTLCount and TTLUnit\n\nReplaced Oem/hp with Oem/hpe"
+			},
+			"response": []
+		},
+		{
 			"name": "Gen9: Event Subscription",
 			"event": [
 				{
@@ -237,7 +291,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{iloURI}}/redfish/v1/EventService/Subscriptions/33",
+					"raw": "{{iloURI}}/redfish/v1/EventService/Subscriptions/5",
 					"host": [
 						"{{iloURI}}"
 					],
@@ -246,7 +300,51 @@
 						"v1",
 						"EventService",
 						"Subscriptions",
-						"33"
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CPUUtilTriggers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TelemetryService/Triggers/CPUUtilTriggers",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TelemetryService",
+						"Triggers",
+						"CPUUtilTriggers"
 					]
 				}
 			},

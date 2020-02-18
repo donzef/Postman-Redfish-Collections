@@ -7,6 +7,39 @@
 	},
 	"item": [
 		{
+			"name": "Redfish Versions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Root Services",
 			"request": {
 				"method": "GET",
@@ -63,6 +96,47 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\n\t\"ResetType\": \"ForceOff\"\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Actions",
+						"ComputerSystem.Reset",
+						""
+					]
+				},
+				"description": "Force Power Off the remote server"
+			},
+			"response": []
+		},
+		{
+			"name": "Graceful Shutdown",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\t\"ResetType\": \"GracefulShutdown\"\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/",
@@ -452,6 +526,45 @@
 			"response": []
 		},
 		{
+			"name": "Network Device Function",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/NetworkService/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"NetworkService",
+						""
+					]
+				},
+				"description": "Retrieves iLO network services (i.e. RemoteSyslog, AlertMail...)"
+			},
+			"response": []
+		},
+		{
 			"name": "RemoteSyslogServer",
 			"request": {
 				"method": "PATCH",
@@ -645,6 +758,95 @@
 					]
 				},
 				"description": "OpenAPI conformance: If a resource has one and only one element, the ?only parameter returns the content of this single element.\n\nIf a resource has more than one element the ?only parameter returns the list of all the elements."
+			},
+			"response": []
+		},
+		{
+			"name": "Boot Mode",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"type": "text",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1/NetworkAdapters/6421377D/NetworkDeviceFunctions/7A79/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1",
+						"NetworkAdapters",
+						"6421377D",
+						"NetworkDeviceFunctions",
+						"7A79",
+						"Settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Network Device Function Boot Mode",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"type": "text",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"BootMode\": \"None\"}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1/NetworkAdapters/6421377D/NetworkDeviceFunctions/7A79/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1",
+						"NetworkAdapters",
+						"6421377D",
+						"NetworkDeviceFunctions",
+						"7A79",
+						"Settings",
+						""
+					]
+				},
+				"description": "Test whether a specific Network Device Function can have its Boot Protocol Mode modified."
 			},
 			"response": []
 		}

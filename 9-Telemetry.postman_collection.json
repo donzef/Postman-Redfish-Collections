@@ -150,54 +150,13 @@
 						"CPUUtilTriggers",
 						""
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Change CPU Utilization Triggers",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\t\"NumericThresholds\": {\r\n        \"LowerCritical\": {\r\n        \t\"DwellTime\": \"PT20S\",\r\n            \"Reading\": 2\r\n        },\r\n        \"UpperCritical\": {\r\n        \t\"DwellTime\": \"PT20S\",\r\n            \"Reading\": 72\r\n        }\r\n    }\r\n}"
 				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/TelemetryService/Triggers/CPUUtilTriggers/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"TelemetryService",
-						"Triggers",
-						"CPUUtilTriggers",
-						""
-					]
-				}
+				"description": "Defaults are:\n\n\n    \"NumericThresholds\": {\n        \"LowerCritical\": {\n            \"Activation\": \"Decreasing\",\n            \"DwellTime\": \"PT0S\",\n            \"Reading\": 0\n        },\n        \"UpperCritical\": {\n            \"Activation\": \"Increasing\",\n            \"DwellTime\": \"PT0S\",\n            \"Reading\": 0\n        }\n    },\n    \"Status\": {\n        \"Health\": \"OK\",\n        \"State\": \"Enabled\"\n    },\n    \"TriggerActions\": [\n        \"LogToLogService\"\n    ]"
 			},
 			"response": []
 		},
 		{
-			"name": "Change Trigger Action",
+			"name": "Change CPU Utilization Thresholds",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -219,7 +178,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t    \"TriggerActions\": [\r\n        \"RedfishEvent\"\r\n    ]\r\n}"
+					"raw": "{\r\n\t\"NumericThresholds\": {\r\n        \"LowerCritical\": {\r\n        \t\"DwellTime\": \"PT20S\",\r\n            \"Reading\": 10\r\n        },\r\n        \"UpperCritical\": {\r\n        \t\"DwellTime\": \"PT20S\",\r\n            \"Reading\": 90\r\n        }\r\n    }\r\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/TelemetryService/Triggers/CPUUtilTriggers/",
@@ -234,8 +193,7 @@
 						"CPUUtilTriggers",
 						""
 					]
-				},
-				"description": "Change Trigger Action from LogtoLogService to RedfishEvent"
+				}
 			},
 			"response": []
 		}
