@@ -723,12 +723,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"Oem\": {\"Hpe\": {\"AlertMailEnabled\": false}}}\n\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\"Oem\": {\"Hpe\": {\"AlertMailEnabled\": false}}}\n\n"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Managers/1/networkprotocol",

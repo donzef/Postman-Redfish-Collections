@@ -849,6 +849,51 @@
 				"description": "Test whether a specific Network Device Function can have its Boot Protocol Mode modified."
 			},
 			"response": []
+		},
+		{
+			"name": "Filter IML entries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/LogServices/IML/Entries?$filter=Id lt '10' ",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"LogServices",
+						"IML",
+						"Entries"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "Id lt '10' "
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
