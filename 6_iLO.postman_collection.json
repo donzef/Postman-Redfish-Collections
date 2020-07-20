@@ -909,12 +909,13 @@
 						"1",
 						""
 					]
-				}
+				},
+				"description": "Should include DHCP v4 and v6 = false"
 			},
 			"response": []
 		},
 		{
-			"name": "iLO5 Set DomainName",
+			"name": "iLO5 Set IPv4 DomainName",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -934,7 +935,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"Oem\": {\r\n        \"Hpe\": {\r\n        \t\"DHCPv6\": {\r\n                \"StatefulModeEnabled\": false,\r\n                \"StatelessModeEnabled\": false,\r\n                \"UseDNSServers\": false,\r\n                \"UseDomainName\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseRapidCommit\": false\r\n            },\r\n            \"DomainName\": \"\"\r\n        }\r\n    }\r\n}"
+					"raw": "{\r\n\"Oem\": {\r\n        \"Hpe\": {\r\n        \t\"DHCPv4\": {\r\n                \"UseDNSServers\": false,\r\n                \"UseDomainName\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseGateway\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseStaticRoutes\": false\r\n            },\r\n            \"DomainName\": \"foo.bar\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {}
+					}
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
@@ -953,6 +957,251 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "iLO5 Set IPv6 DomainName",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"Oem\": {\r\n        \"Hpe\": {\r\n        \t\"DHCPv6\": {\r\n                \"StatefulModeEnabled\": false,\r\n                \"StatelessModeEnabled\": false,\r\n                \"UseDNSServers\": false,\r\n                \"UseDomainName\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseRapidCommit\": false\r\n            },\r\n            \"DomainName\": \"\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"EthernetInterfaces",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Virtual Nic status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e4becd16-4188-465e-b211-6ffcc244e25b",
+						"exec": [
+							"// Make sure we'll work on a suitable response.",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response includes Oem\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"Oem\");",
+							"});",
+							"",
+							"// Extract values from the response.",
+							"//let ClearRestApiStatus = pm.response.json().Oem.Hpe.ClearRestApiStatus;",
+							"",
+							"// Create Postman environment variables",
+							"//pm.environment.set('ClearRestApiStatus', ClearRestApiStatus);",
+							"",
+							"// Print keys and corresponding values on the Postman Console.",
+							"//console.log(\"ClearRestApiStatus:\",  pm.variables.get(\"ClearRestApiStatus\"));",
+							"",
+							"",
+							"//pm.environment.unset('PostState', PostState);",
+							"//pm.environment.unset('SmartArrayDiscovery', SmartArrayDiscovery);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Host Interface",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/HostInterfaces/1",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"HostInterfaces",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iLO5 HostName (Dedicated NIC)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"HostName\": \"ilo-hst360g10\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"EthernetInterfaces",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iLO5 Set FQDN",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"DHCPv4\": {\r\n        \"DHCPEnabled\": false,\r\n        \"UseDNSServers\": false,\r\n        \"UseDomainName\": false,\r\n        \"UseGateway\": false,\r\n        \"UseNTPServers\": false,\r\n        \"UseStaticRoutes\": false\r\n    },\r\n    \"FQDN\": \"ilo-hst360g10.b172.local\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"EthernetInterfaces",
+						"1",
+						""
+					]
+				},
+				"description": "Test"
+			},
+			"response": []
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }

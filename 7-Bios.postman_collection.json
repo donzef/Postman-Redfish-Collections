@@ -13,13 +13,16 @@
 					"listen": "test",
 					"script": {
 						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
-						"type": "text/javascript",
 						"exec": [
 							""
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -40,18 +43,21 @@
 						"value": "{{Token}}"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/",
+					"raw": "{{iloURI}}/redfish/v1/systems/1/bios",
 					"host": [
 						"{{iloURI}}"
 					],
 					"path": [
 						"redfish",
 						"v1",
-						"Systems",
+						"systems",
 						"1",
-						"Bios",
-						""
+						"bios"
 					]
 				}
 			},
@@ -285,6 +291,120 @@
 			"response": []
 		},
 		{
+			"name": "Gen10: Reset Bios Defaults",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a8cff20d-7b55-4a32-8c66-58d836644532",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Action\": \"Bios.ResetBios\"}\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Settings/Actions/Bios.ResetBios",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Bios",
+						"Settings",
+						"Actions",
+						"Bios.ResetBios"
+					]
+				},
+				"description": "TBD"
+			},
+			"response": []
+		},
+		{
+			"name": "Gen10: Save User Defaults",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c5b66eae-870d-40da-abd0-1bf587223334",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Attributes\": {\n\t\t\"SaveUserDefaults\": \"Yes\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Bios",
+						"Settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Gen9: Change Bios Admin params",
 			"event": [
 				{
@@ -321,62 +441,6 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\t\"AdminName\": \"Toto Content\",\n\t\t\"AdminEmail\": \"toto.content@koulapic.com\",\n\t\t\"AdminPhone\": \"+330678901234\"\n}"
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Settings/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Systems",
-						"1",
-						"Bios",
-						"Settings",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Save User Defaults",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"Attributes\": {\n\t\t\"SaveUserDefaults\": \"Yes\"\n\t}\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Settings/",
@@ -453,7 +517,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Bios Settings",
+			"name": "Get Bios Pending Settings",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -525,6 +589,66 @@
 				"description": "Retrieve Bios settings to be restored if desired. This Base Configuration is also called Bios Default settings in the documentation."
 			},
 			"response": []
+		},
+		{
+			"name": "Gen10: Change Memory Protection",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Attributes\": {\n\t\t\"AdvancedMemProtection\": \"AdvancedEcc\"\n\t\t\n\t}\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Bios",
+						"Settings",
+						""
+					]
+				},
+				"description": "Values: FastFaultTolerantADDDC\n        AdvancedEcc\n        OnlineSpareAdvancedEcc\n        MirroredAdvancedEcc"
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -548,5 +672,6 @@
 				]
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
