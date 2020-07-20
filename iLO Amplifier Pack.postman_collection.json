@@ -1,0 +1,956 @@
+{
+	"info": {
+		"_postman_id": "cbffa7b2-78d3-4658-a033-d91c22b80f45",
+		"name": "iLO Amplifier Pack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Chassis Collection",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Systems Collection",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Managers Collection",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aggregator Service",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AggregatorService/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AggregatorService",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Managed Groups",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AggregatorService/ManagedGroups",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AggregatorService",
+						"ManagedGroups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server Groups",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AggregatorService/ServerGroups",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AggregatorService",
+						"ServerGroups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Managed Server Groups",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AggregatorService/ManagedServerGroups",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AggregatorService",
+						"ManagedServerGroups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"OperationType\": \"CreateGroup\",\r\n   \"Name\": \"FDZ.ETC\",\r\n   \"GroupDescription\": \"Adding a new server group\",\r\n   \"ServerList\": [\r\n    \t\"16.31.87.2\",\r\n    \t\"16.31.87.51\"\r\n   ]\r\n}\r\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/JobService/Actions/Oem/Hpe/HpeWfmJobServiceExt.ServerGroupJobs",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"JobService",
+						"Actions",
+						"Oem",
+						"Hpe",
+						"HpeWfmJobServiceExt.ServerGroupJobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download  AHS log",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"type": "text",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"SelectedSystemsManagerAddress\": [\r\n    \t\"192.168.2.81\",\r\n    \t\"192.168.3.112\"\r\n   ],\r\n   \"DownloadAll\": false,\r\n   \"LocalDownload\": false,\r\n   \"FromDate\": \"2020-04-21\",\r\n   \"ToDate\": \"2020-04-22\",\r\n   \"StorageType\": \"NetworkShare\",\r\n   \"NetworkShareAddress\": \"192.168.2.80\",\r\n   \"MountPath\": \"/usr/kits/nfs\",\r\n   \"DestinationPath\": \"AhsLogs\"\r\n}\r\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/JobService/Actions/Oem/Hpe/HpeWfmJobServiceExt.AhsDownloadJobs",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"JobService",
+						"Actions",
+						"Oem",
+						"Hpe",
+						"HpeWfmJobServiceExt.AhsDownloadJobs"
+					]
+				},
+				"description": "# Body property descriptions\r\n\r\n`SelectedSystemsManagerAddress`: List of iLO IPs to download AHS logs from.\r\n\r\n`DownloadAll` Download complete AHS log or not\r\n\r\n`LocalDownload`: \r\n\r\n`FromDate`: Start date\r\n\r\n`ToDate`: End date\r\n\r\n`StorageType`: `NetworkShare`: NFS mounted share with write access for the iLO Amplifier Pack. or `TBD`: TBD\r\n\r\n`NetworkShareAddress`: Remote NFS Server IP address\r\n\r\n`MountPath`: NFS shared directory path on the NFS server\r\n\r\n`DestinationPath`: Directory path underneath the NFS mount point where to post the AHS logs"
+			},
+			"response": []
+		},
+		{
+			"name": "Schemas list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Schemas",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Schemas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Service and actions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/JobService",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"JobService"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Schemas of JobService Extention",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/json/schema/HpeWfmJobServiceExt.json",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"json",
+						"schema",
+						"HpeWfmJobServiceExt.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job States and Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/JobService/Jobs/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"JobService",
+						"Jobs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Infos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AggregatorService/LogServices/AlertLog/Entries?$reverse=true&_=1587555374479",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AggregatorService",
+						"LogServices",
+						"AlertLog",
+						"Entries"
+					],
+					"query": [
+						{
+							"key": "$reverse",
+							"value": "true"
+						},
+						{
+							"key": "_",
+							"value": "1587555374479"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Completed Jobs",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"type": "text",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/JobService/Actions/Oem/Hpe/HpeWfmJobServiceExt.DeleteCompletedJobs",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"JobService",
+						"Actions",
+						"Oem",
+						"Hpe",
+						"HpeWfmJobServiceExt.DeleteCompletedJobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Server Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"OperationType\": \"DeleteGroup\",\r\n   \"Name\": \"FDZ.ETC\",\r\n    \"DeleteServers\": false\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/JobService/Actions/Oem/Hpe/HpeWfmJobServiceExt.ServerGroupJobs",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"JobService",
+						"Actions",
+						"Oem",
+						"Hpe",
+						"HpeWfmJobServiceExt.ServerGroupJobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Discover Servers in range",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"type": "text",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"StartAddress\": \"192.168.0.0\",\r\n   \"EndAddress\": \"192.168.3.255\",\r\n   \"PortNumber\": 443,\r\n   \"UserName\": \"{{iloUser}}\",\r\n   \"Password\": \"{{iloPasswd}}\"\r\n}\r\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AggregatorService/Actions/HpeWfmAggregatorService.DiscoverServersInRange",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AggregatorService",
+						"Actions",
+						"HpeWfmAggregatorService.DiscoverServersInRange"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Discover Single server",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"type": "text",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ManagerAddress\":\"16.31.87.51\",\n\t\"UserName\": \"{{iloUser}}\",\n\t\"Password\": \"{{iloPasswd}}\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AggregatorService/ManagedSystems",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AggregatorService",
+						"ManagedSystems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Schemas of Aggregator Service",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/json/schema/HpeWfmAggregatorService.json",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"json",
+						"schema",
+						"HpeWfmAggregatorService.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Servers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"SelectedSystemsManagerAddress\": [\"16.31.87.51\"]\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/JobService/Actions/Oem/Hpe/HpeWfmJobServiceExt.DeleteJobs",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"JobService",
+						"Actions",
+						"Oem",
+						"Hpe",
+						"HpeWfmJobServiceExt.DeleteJobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Managed Systems",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AggregatorService/ManagedSystems",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AggregatorService",
+						"ManagedSystems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Managed System Post Schema",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/json/schema/HpeWfmManagedSystemPost.json",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"json",
+						"schema",
+						"HpeWfmManagedSystemPost.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Import Firmware BaseLine",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"type": "text",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"type": "text",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"NetworkShareAddress\": \"16.31.87.42\",\n\"StorageType\": \"NetworkShare\",\n\"MountPath\": \"/usr/kits/nfs\",\n\"SourcePath\": \"/SPPs/Spp2020-03.iso\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/JobService/Actions/Oem/Hpe/HpeWfmJobServiceExt.ImportBaselineJobs",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"JobService",
+						"Actions",
+						"Oem",
+						"Hpe",
+						"HpeWfmJobServiceExt.ImportBaselineJobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add On Services",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/AddOnServices",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"AddOnServices"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

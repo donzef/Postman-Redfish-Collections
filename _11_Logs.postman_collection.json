@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "05539c33-53be-4cbf-a8d4-2fd995176d24",
+		"name": "_11_Logs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "iLO Integrated Management Logs (IML)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/systems/1/logservices/IML/Entries?$skip=180",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"systems",
+						"1",
+						"logservices",
+						"IML",
+						"Entries"
+					],
+					"query": [
+						{
+							"key": "$skip",
+							"value": "180"
+						}
+					]
+				},
+				"description": "latest"
+			},
+			"response": []
+		},
+		{
+			"name": "iLO Event Logs (IEL)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/systems/1/logservices/IEL",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"systems",
+						"1",
+						"logservices",
+						"IEL"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

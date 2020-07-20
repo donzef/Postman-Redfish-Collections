@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "77818f5e-d75d-4c68-9998-0edefe90c543",
+		"name": "Jupyter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "JupyterHub users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token ab69bf5b899f4902bec233a383b84040",
+						"description": "francois' token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{JupyterURI}}/users",
+					"host": [
+						"{{JupyterURI}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Specific user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token ab69bf5b899f4902bec233a383b84040",
+						"description": "francois' token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{JupyterURI}}/users/student1",
+					"host": [
+						"{{JupyterURI}}"
+					],
+					"path": [
+						"users",
+						"student1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kill Jupyter server",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"description": "francois' token",
+						"key": "Authorization",
+						"type": "text",
+						"value": "token b6c6ed97922d46b580dbb375f81ffe65"
+					}
+				],
+				"url": {
+					"raw": "{{JupyterURI}}/users/student107/server",
+					"host": [
+						"{{JupyterURI}}"
+					],
+					"path": [
+						"users",
+						"student107",
+						"server"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Services",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token ab69bf5b899f4902bec233a383b84040",
+						"description": "francois' token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{JupyterURI}}/services",
+					"host": [
+						"{{JupyterURI}}"
+					],
+					"path": [
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Specific user Tokens",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token ab69bf5b899f4902bec233a383b84040",
+						"description": "francois' token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{JupyterURI}}/users/student1/tokens",
+					"host": [
+						"{{JupyterURI}}"
+					],
+					"path": [
+						"users",
+						"student1",
+						"tokens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Proyx routing tables",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token ab69bf5b899f4902bec233a383b84040",
+						"description": "francois' token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{JupyterURI}}/proxy",
+					"host": [
+						"{{JupyterURI}}"
+					],
+					"path": [
+						"proxy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start user server",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token ab69bf5b899f4902bec233a383b84040",
+						"description": "francois' token",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{JupyterURI}}/users/student2/servers/student2",
+					"host": [
+						"{{JupyterURI}}"
+					],
+					"path": [
+						"users",
+						"student2",
+						"servers",
+						"student2"
+					]
+				},
+				"description": "Need c.JupyterHub.allow_named_servers = True in /etc/jupyter/jupyter_config.py"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
