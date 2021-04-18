@@ -52,7 +52,7 @@ Read the [Managing iLO sessions with Redfish](https://developer.hpe.com/blog/man
 
 [Published](https://documenter.getpostman.com/view/3625509/RzfmEST5)
 
-### 2_SmartStorage
+### 2_Storage
 
 Management of HPE Smart Storage: view, create, delete disks and logical drives.
 
