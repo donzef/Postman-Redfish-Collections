@@ -12,7 +12,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -70,7 +69,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1eb9a163-e871-4ec0-b843-82c96d7d14f4",
 						"exec": [
 							"pm.environment.set(\"Token\", postman.getResponseHeader(\"X-Auth-Token\"));",
 							"pm.environment.set(\"SessionLocation\", postman.getResponseHeader(\"Location\"));",
@@ -130,7 +128,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -180,7 +177,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b2b25c1e-241f-4abe-afe8-159806c51c49",
 						"exec": [
 							"pm.test(\"Body matches string\", function () {",
 							"    pm.expect(pm.response.text()).to.include(\"Success\");",
@@ -291,7 +287,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 						"exec": [
 							""
 						],
@@ -345,7 +340,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "fdcf0f0a-9b37-4928-820f-b291e56da7c4",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -355,7 +349,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "f0401538-1ee2-411d-b80d-8b5445b1b70e",
 				"type": "text/javascript",
 				"exec": [
 					""

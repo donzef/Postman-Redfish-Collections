@@ -1,0 +1,1767 @@
+{
+	"info": {
+		"_postman_id": "1c2df68b-e005-4a0a-94bc-a4a6deaecf30",
+		"name": "_10_FirmwareUpdates",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UpdateService",
+			"item": [
+				{
+					"name": "Simple Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ImageURI\": \"https://172.16.50.100/Kits/firmwares/ilo5_219.bin\"\n}\n"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"UpdateService",
+								"Actions",
+								"UpdateService.SimpleUpdate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Simple Update with TransferProtocol",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ImageURI\": \"172.16.50.100/Kits/firmwares/ilo5_230.bin\",\n    \"TransferProtocol\": \"HTTPS\"\n}\n"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"UpdateService",
+								"Actions",
+								"UpdateService.SimpleUpdate",
+								""
+							]
+						},
+						"description": "Use of the TransferProtocol parameter"
+					},
+					"response": []
+				}
+			],
+			"description": "Standard Simple Update"
+		},
+		{
+			"name": "FW OEM Extenstion",
+			"item": [
+				{
+					"name": "iLO Repository",
+					"item": [
+						{
+							"name": "Component Repository Collection",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/ComponentRepository?$expand=.",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"ComponentRepository"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload  Web SC to Repository",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ImageURI\":   \"https://172.16.50.100/Kits/firmwares/cp040152.exe\",\n\t\"CompSigURI\": \"https://172.16.50.100/Kits/firmwares/cp040152.compsig\",\n    \"UpdateRepository\": true,\n\t\"UpdateTarget\": false\n}\n"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/Actions/Oem/Hpe/HpeiLOUpdateServiceExt.AddFromUri/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"Actions",
+										"Oem",
+										"Hpe",
+										"HpeiLOUpdateServiceExt.AddFromUri",
+										""
+									]
+								},
+								"description": "Component located on a HTTP server"
+							},
+							"response": []
+						},
+						{
+							"name": "Upload  part1 of Big Web component to Repository",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ImageURI\": \"http://172.16.50.100/Kits/firmwares/cp040154.part1\",\n\t\"CompSigURI\": \"http://172.16.50.100/Kits/firmwares/cp040154_part1.compsig\",\n    \"ComponentFileName\": \"cp040154.exe\",\n    \"Section\": 1,\n    \"UpdateRepository\": true,\n\t\"UpdateTarget\": false\n}\n"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/Actions/Oem/Hpe/HpeiLOUpdateServiceExt.AddFromUri/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"Actions",
+										"Oem",
+										"Hpe",
+										"HpeiLOUpdateServiceExt.AddFromUri",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload  part2 of Big Web component to Repository",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ImageURI\": \"http://172.16.50.100/Kits/firmwares/cp040154.part2\",\n\t\"CompSigURI\": \"http://172.16.50.100/Kits/firmwares/cp040154_part2.compsig\",\n    \"ComponentFileName\": \"cp040154.exe\",\n    \"Section\": 2,\n\t\"UpdateRepository\": true,\n    \"UpdateTarget\": false\t\n}\n"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/Actions/Oem/Hpe/HpeiLOUpdateServiceExt.AddFromUri/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"Actions",
+										"Oem",
+										"Hpe",
+										"HpeiLOUpdateServiceExt.AddFromUri",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload  local component to Repository",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ImageURI\": \"/usr/kits/cp040152.exe\",\n\t\"CompSigURI\": \"/usr/kits/cp040152.compsig\",\n\t\"UpdateTarget\": false,\n\t\"UpdateRecoverySet\": false,\n\t\"UpdateRepository\": true\n}\n"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/Actions/Oem/Hpe/HpeiLOUpdateServiceExt.AddFromUri/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"Actions",
+										"Oem",
+										"Hpe",
+										"HpeiLOUpdateServiceExt.AddFromUri",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload  Web Binary to Repository",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ImageURI\":   \"https://172.16.50.100/Kits/firmwares/ilo5_230.bin\",\n    \"UpdateRepository\": true,\n\t\"UpdateTarget\": false,\n\t\"UpdateRecoverySet\": false\n}\n"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/Actions/Oem/Hpe/HpeiLOUpdateServiceExt.AddFromUri/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"Actions",
+										"Oem",
+										"Hpe",
+										"HpeiLOUpdateServiceExt.AddFromUri",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Installation Queue",
+					"item": [
+						{
+							"name": "FW iLO Installation queue",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/UpdateTaskQueue/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"UpdateTaskQueue",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add SC to installation queue for immediate deployment",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"Name\": \"Friendly name for this item in the installation queue\",\n\"Filename\": \"cp040154.exe\",\n\"Command\": \"ApplyUpdate\"\n}\n"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/UpdateTaskQueue/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"UpdateTaskQueue",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Task with Maintenance Window",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"Name\": \"FW for HPE Integrated Lights-Out 5\",\n    \"MaintenanceWindow\": \"7ada2ed8\",\n    \"Filename\": \"cp040154.exe\"\n}\n"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/UpdateTaskQueue/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"UpdateTaskQueue",
+										""
+									]
+								},
+								"description": "Schema location: {{iloURI}}/redfish/v1/JsonSchemas/HpeComponentUpdateTask/\npointing to:\n\n{{iloURI}}/redfish/v1/SchemaStore/en/HpeComponentUpdateTask.json/\n\n\"Filename\": \"cp040152.exe\": 10 GB 562SFP+ \n\n\"Filename\": \"cp043370.exe\": SmartArray v 2.65"
+							},
+							"response": []
+						},
+						{
+							"name": "Add Component to iLO Installation Queue",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"Name\": \"String describing Componenent content\",\n    \"Filename\": \"cp043370.exe\",\n    \"Command\": \"ApplyUpdate\",\n\t\"Expire\": \"\",\n\t\"StartAfter\": \"\",\n\t\"TPMOverride\": true,\n\t\"UpdatableBy\": [\"Uefi\"]\n}\n"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/UpdateTaskQueue/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"UpdateTaskQueue",
+										""
+									]
+								},
+								"description": "Schema location: {{iloURI}}/redfish/v1/JsonSchemas/HpeComponentUpdateTask/\npointing to:\n\n{{iloURI}}/redfish/v1/SchemaStore/en/HpeComponentUpdateTask.json/\n\n\"Filename\": \"cp040152.exe\": 10 GB 562SFP+ \n\n\"Filename\": \"cp043370.exe\": SmartArray v 2.65"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete item in Intallation Queue",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/UpdateTaskQueue/2d1a59f9",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"UpdateTaskQueue",
+										"2d1a59f9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Binary to installation queue for immediate deployment",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"Name\": \"Binary to be flashed immediately by iLO\",\n\"Filename\": \"ilo5_230.bin\",\n\"Command\": \"ApplyUpdate\",\n\"UpdatableBy\": [\n        \"Bmc\"\n    ]\n}\n"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/UpdateTaskQueue/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"UpdateTaskQueue",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete all items from Installation Queue",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/Actions/Oem/Hpe/HpeiLOUpdateServiceExt.DeleteUpdateTaskQueueItems/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"Actions",
+										"Oem",
+										"Hpe",
+										"HpeiLOUpdateServiceExt.DeleteUpdateTaskQueueItems",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Maintenance Windows",
+					"item": [
+						{
+							"name": "Create Maintenance Window",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Description\": \"Christmas 2020 Maintenance Window\",\n    \"Name\": \"Christmas Maintenance Window\",\n    \"StartAfter\": \"2020-12-25T00:00:00Z\",\n    \"Expire\": \"2020-12-25T22:00:00Z\"\n}\n"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/MaintenanceWindows/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"MaintenanceWindows",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a single Maintenance Window",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/MaintenanceWindows/dd6c3126",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"MaintenanceWindows",
+										"dd6c3126"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete All Maintenance Windows",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/Actions/Oem/Hpe/HpeiLOUpdateServiceExt.DeleteMaintenanceWindows",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"Actions",
+										"Oem",
+										"Hpe",
+										"HpeiLOUpdateServiceExt.DeleteMaintenanceWindows"
+									]
+								},
+								"description": "Delete all defined maintenance windows with a single POST"
+							},
+							"response": []
+						},
+						{
+							"name": "Maintenance Windows",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/MaintenanceWindows",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"MaintenanceWindows"
+									]
+								},
+								"description": "GET collection of Maintenance Windows"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Install Sets",
+					"item": [
+						{
+							"name": "Create Install Set",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"Name\": \"MyInstallSet\",\r\n\"Description\": \"Description of My Install Set\",\r\n\"IsRecovery\": false,\r\n\"Sequence\": [\r\n    {\r\n      \"Name\": \"iLO5 FW 2.30\",\r\n      \"Filename\": \"ilo5_230.bin\",\r\n       \"Command\": \"ApplyUpdate\",\r\n        \"UpdatableBy\": [\"Bmc\"]\r\n    }\r\n]\r\n}"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/InstallSets/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"InstallSets",
+										""
+									]
+								},
+								"description": "Create new Install Set. Needs at least one component."
+							},
+							"response": []
+						},
+						{
+							"name": "InstallSet Schema",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/HpeComponentInstallSet.json",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"SchemaStore",
+										"en",
+										"HpeComponentInstallSet.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invoke Install Set",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"MaintenanceWindow\": \"636c6859\",\r\n\"ClearTaskQueue\": true,\r\n\"UpdateRecoverySet\": false\r\n}"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/InstallSets/a4f0d824/Actions/HpeComponentInstallSet.Invoke",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"InstallSets",
+										"a4f0d824",
+										"Actions",
+										"HpeComponentInstallSet.Invoke"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modify Install Set",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"MyModifiedInstallSet\",\r\n    \"Sequence\": [ {\r\n            \"Name\": \"iLO5 FW 2.30\",\r\n            \"Filename\": \"ilo5_230.bin\",\r\n            \"Command\": \"ApplyUpdate\",\r\n            \"UpdatableBy\": [ \"Bmc\" ]\r\n        },\r\n        {\r\n            \"Name\": \"Innovation Engine (IE) Universal Image\",\r\n            \"Filename\": \"IEGen10_0.2.1.2B.signed.bin\",\r\n            \"Command\": \"ApplyUpdate\",\r\n            \"UpdatableBy\": [ \"Bmc\" ]\r\n        },\r\n        {\r\n            \"Name\": \"ROM 2.36\",\r\n            \"Filename\": \"U32_2.36_07_16_2020.signed.flash\",\r\n            \"Command\": \"ApplyUpdate\",\r\n            \"UpdatableBy\": [ \"Bmc\" ]\r\n        },\r\n        {\r\n            \"Name\": \"Server Platform Services (SPS) Firmware\",\r\n            \"Filename\": \"SPSGen10_04.01.04.381.signed.bin\",\r\n            \"Command\": \"ApplyUpdate\",\r\n            \"UpdatableBy\": [ \"Bmc\" ]\r\n        } ]\r\n}"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/InstallSets/3e3567d5",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"InstallSets",
+										"3e3567d5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Install Set",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/InstallSets/a4f0d824/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"InstallSets",
+										"a4f0d824",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create another Install",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "OData-Version",
+										"value": "4.0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "{{Token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"Name\": \"AnotherInstallSet\",\r\n\"Description\": \"Description of My Install Set\",\r\n\"IsRecovery\": false,\r\n\"Sequence\": [\r\n    {\r\n      \"Name\": \"iLO5 FW 2.30\",\r\n      \"Filename\": \"ilo5_230.bin\",\r\n       \"Command\": \"ApplyUpdate\",\r\n        \"UpdatableBy\": [\"Bmc\"]\r\n    },\r\n    {\r\n            \"Name\": \"ROM 2.36\",\r\n            \"Filename\": \"U32_2.36_07_16_2020.signed.flash\",\r\n            \"Command\": \"ApplyUpdate\",\r\n            \"UpdatableBy\": [ \"Uefi\"\r\n            ]\r\n        }\r\n]\r\n}"
+								},
+								"url": {
+									"raw": "{{iloURI}}/redfish/v1/UpdateService/InstallSets/",
+									"host": [
+										"{{iloURI}}"
+									],
+									"path": [
+										"redfish",
+										"v1",
+										"UpdateService",
+										"InstallSets",
+										""
+									]
+								},
+								"description": "Create new Install Set. Needs at least one component.\r\n\r\niLO FW is in first place. Does it matter ?"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update Service Extension Schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/HpeiLOUpdateServiceExt.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"HpeiLOUpdateServiceExt.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Component Update Task Schema",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/HpeComponentUpdateTask.json/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"HpeComponentUpdateTask.json",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HttpPushURI",
+			"item": [
+				{
+					"name": "HppPushUri",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "sessionKey={{Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Expect",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "SesionKey",
+									"type": "file",
+									"src": "/C:/kits/ilo5-218/SessionKey.txt"
+								},
+								{
+									"key": "short",
+									"type": "file",
+									"src": "/C:/kits/ilo5-218/short.bin"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{iloURI}}/cgi-bin/uploadFile",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"cgi-bin",
+								"uploadFile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UpdateService locations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						""
+					]
+				},
+				"description": "TBD"
+			},
+			"response": []
+		},
+		{
+			"name": "Expanded SoftwareInventory Collection",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/SoftwareInventory?$expand=.",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						"SoftwareInventory"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "."
+						}
+					]
+				},
+				"description": "List all collection of all firmware components"
+			},
+			"response": []
+		},
+		{
+			"name": "SoftwareInventory Collection",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/SoftwareInventory",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						"SoftwareInventory"
+					]
+				},
+				"description": "List all collection of all firmware components"
+			},
+			"response": []
+		},
+		{
+			"name": "iLO4 Firmware Inventory",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/FirmwareInventory",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"FirmwareInventory"
+					]
+				},
+				"description": "List all collection of all firmware components"
+			},
+			"response": []
+		},
+		{
+			"name": "Expanded FirmwareInventory collection",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/FirmwareInventory?$expand=.",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						"FirmwareInventory"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "."
+						}
+					]
+				},
+				"description": "A single GET to retrieve all the details of all firmware in the system"
+			},
+			"response": []
+		},
+		{
+			"name": "Tasks List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/TaskService/Tasks/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"TaskService",
+						"Tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expanded Component Repository",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/ComponentRepository?$expand=.",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						"ComponentRepository"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "."
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateService Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Make sure we'll work on a suitable response.",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response includes Oem\", function () {",
+							"    pm.expect(pm.response.json()).to.include.keys(\"Oem\");",
+							"});",
+							"",
+							"// Extract values from the response.",
+							"let FlashProgressPercent = pm.response.json().Oem.Hpe.FlashProgressPercent;",
+							"let UpdateServiceState = pm.response.json().Oem.Hpe.State;",
+							"//let UpdateServiceResult = pm.response.json().Oem.Hpe.Result.MessageId;",
+							"",
+							"",
+							"// Create Postman environment variables",
+							"pm.environment.set('UpdateServiceState', UpdateServiceState);",
+							"pm.environment.set('FlashProgressPercent', FlashProgressPercent);",
+							"//pm.environment.set('UpdateServiceResult', UpdateServiceResult)",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						""
+					]
+				},
+				"description": "Reports the Update Service Status and FlashProgressPercent in Environment variables."
+			},
+			"response": []
+		},
+		{
+			"name": "Root Update Service",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/UpdateService/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"UpdateService",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

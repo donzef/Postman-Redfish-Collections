@@ -7,6 +7,627 @@
 	},
 	"item": [
 		{
+			"name": "SNMP",
+			"item": [
+				{
+					"name": "Add SNMP Alert Destination",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"AlertDestination\": \"16.31.87.41\",\n    \"SNMPAlertProtocol\": \"SNMPv1Trap\",\n    \"TrapCommunity\": \"public\"\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/SnmpService/SNMPAlertDestinations/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"SnmpService",
+								"SNMPAlertDestinations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " List SNMP Alert Destinations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/SnmpService/SNMPAlertDestinations/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"SnmpService",
+								"SNMPAlertDestinations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete SNMP Alert destination",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/SnmpService/SNMPAlertDestinations/2/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"SnmpService",
+								"SNMPAlertDestinations",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " Enable/Disable SNMP protocol",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"SNMP\": {\r\n        \"ProtocolEnabled\": false\r\n    }\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/networkprotocol",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"networkprotocol"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable/Disable SNMPv1 protocol",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"SNMPv1Enabled\": true\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/SnmpService/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"SnmpService",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable/Disable SNMP Alerts",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"AlertsEnabled\": true\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/SnmpService/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"SnmpService",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SNMP Service",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/SnmpService/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"SnmpService",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " iLO4 Enable/Disable SNMP protocol",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"SNMP\": {\r\n        \"Port\": 161,\r\n        \"ProtocolEnabled\": false\r\n    }\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/NetworkService",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"NetworkService"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Remote Support",
+			"item": [
+				{
+					"name": "Remote Support",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/RemoteSupportService/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"RemoteSupportService",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remote Support Logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/RemoteSupportService/ServiceEventLogs/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"RemoteSupportService",
+								"ServiceEventLogs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register to Remote Support",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ConnectionType\": \"DirectConnect\",\r\n    \"HpePassportPassword\": \"TBD\",\r\n    \"HpePassportUserId\": \"donze\",\r\n    \"MessageId\": \"123e4567-e89b-12d3-a456-426614174000\"\r\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/RemoteSupportService/Actions/HpeRemoteSupport.RegisterDeviceToRemoteSupport/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"RemoteSupportService",
+								"Actions",
+								"HpeRemoteSupport.RegisterDeviceToRemoteSupport",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UnRegister Remote Support",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"MessageId\": \"123e4567-e89b-12d3-a456-426614174000\"\r\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/RemoteSupportService/Actions/HpeRemoteSupport.DisableRemoteSupport/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"RemoteSupportService",
+								"Actions",
+								"HpeRemoteSupport.DisableRemoteSupport",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trigger Test Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"MessageId\": \"123e4567-e89b-12d3-a456-426614174000\"\r\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/RemoteSupportService/Actions/HpeRemoteSupport.TriggerTestEvent/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"RemoteSupportService",
+								"Actions",
+								"HpeRemoteSupport.TriggerTestEvent",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ClearEventLog",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/RemoteSupportService/Actions/HpeRemoteSupport.ClearServiceEventLog/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"RemoteSupportService",
+								"Actions",
+								"HpeRemoteSupport.ClearServiceEventLog",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Remote Support Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Managers/1/RemoteSupportService/Actions/HpeRemoteSupport.CompleteDirectConnectRegistration/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Managers",
+								"1",
+								"RemoteSupportService",
+								"Actions",
+								"HpeRemoteSupport.CompleteDirectConnectRegistration",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "iLO entry Point attributes",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -93,296 +714,11 @@
 			"response": []
 		},
 		{
-			"name": "IML entries",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Systems/1/LogServices/IML/Entries/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Systems",
-						"1",
-						"LogServices",
-						"IML",
-						"Entries",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add SNMP Alert Destination",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"AlertDestination\": \"16.31.87.41\",\n    \"SNMPAlertProtocol\": \"SNMPv1Trap\",\n    \"TrapCommunity\": \"public\"\n}"
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/SnmpService/SNMPAlertDestinations/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Managers",
-						"1",
-						"SnmpService",
-						"SNMPAlertDestinations",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": " List SNMP Alert Destinations",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/SnmpService/SNMPAlertDestinations/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Managers",
-						"1",
-						"SnmpService",
-						"SNMPAlertDestinations",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete SNMP Alert destination",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/SnmpService/SNMPAlertDestinations/2/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Managers",
-						"1",
-						"SnmpService",
-						"SNMPAlertDestinations",
-						"2",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Set IPv4 to DHCP",
+			"name": "Clear Rest Api State",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"IPv4Addresses\": [\n        {\n            \"AddressOrigin\": \"DHCP\"\n        }\n    ]\n}"
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Managers",
-						"1",
-						"EthernetInterfaces",
-						"1",
-						""
-					]
-				},
-				"description": "Trying to patch iLO NIC to DHCP. To come back:\n{\n\"IPv4Addresses\": [\n        {\n            \"Address\": \"172.16.50.99\",\n            \"AddressOrigin\": \"Static\",\n            \"Gateway\": \"172.16.50.254\",\n            \"SubnetMask\": \"255.255.255.0\"\n        }\n    ]\n}"
-			},
-			"response": []
-		},
-		{
-			"name": "Change IPv4 to Static",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"IPv4Addresses\": [\n        {\n            \"AddressOrigin\": \"Static\",\n            \"Address\": \"16.84.209.138\",\n            \"Gateway\": \"16.84.208.1\",\n            \"SubnetMask\": \"255.255.254.0\"\n        }\n    ]\n}"
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Managers",
-						"1",
-						"EthernetInterfaces",
-						"1",
-						""
-					]
-				},
-				"description": "Change iLO NIC to DHCP. To come back on B172/Gen10:\n{\n\"IPv4Addresses\": [\n        {\n            \"Address\": \"172.16.50.99\",\n            \"AddressOrigin\": \"Static\",\n            \"Gateway\": \"172.16.50.254\",\n            \"SubnetMask\": \"255.255.255.0\"\n        }\n    ]\n}\n\nIf using ilo-pmem:\n\n{\"IPv4Addresses\": [\n        {\n            \"AddressOrigin\": \"Static\",\n            \"Address\": \"16.84.209.138\",\n            \"Gateway\": \"16.84.208.1\",\n            \"SubnetMask\": \"255.255.254.0\"\n        }\n    ]\n}"
-			},
-			"response": []
-		},
-		{
-			"name": "Clear Rest Api Status",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "e4becd16-4188-465e-b211-6ffcc244e25b",
 						"exec": [
 							"// Make sure we'll work on a suitable response.",
 							"pm.test(\"Status code is 200\", function () {",
@@ -409,11 +745,8 @@
 					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"key": "OData-Version",
@@ -431,10 +764,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{}"
 				},
 				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/",
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/Actions/Oem/Hpe/HpeiLO.ClearRestApiState/",
 					"host": [
 						"{{iloURI}}"
 					],
@@ -443,6 +776,10 @@
 						"v1",
 						"Managers",
 						"1",
+						"Actions",
+						"Oem",
+						"Hpe",
+						"HpeiLO.ClearRestApiState",
 						""
 					]
 				},
@@ -565,12 +902,121 @@
 			"response": []
 		},
 		{
+			"name": "Set IPv4 to DHCP",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"IPv4Addresses\": [\n        {\n            \"AddressOrigin\": \"DHCP\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"EthernetInterfaces",
+						"1",
+						""
+					]
+				},
+				"description": "Trying to patch iLO NIC to DHCP. To come back:\n{\n\"IPv4Addresses\": [\n        {\n            \"Address\": \"172.16.50.99\",\n            \"AddressOrigin\": \"Static\",\n            \"Gateway\": \"172.16.50.254\",\n            \"SubnetMask\": \"255.255.255.0\"\n        }\n    ]\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Change IPv4 to Static",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"IPv4Addresses\": [\n        {\n            \"AddressOrigin\": \"Static\",\n            \"Address\": \"16.84.209.138\",\n            \"Gateway\": \"16.84.208.1\",\n            \"SubnetMask\": \"255.255.254.0\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"EthernetInterfaces",
+						"1",
+						""
+					]
+				},
+				"description": "Change iLO NIC to DHCP. To come back on B172/Gen10:\n{\n\"IPv4Addresses\": [\n        {\n            \"Address\": \"172.16.50.99\",\n            \"AddressOrigin\": \"Static\",\n            \"Gateway\": \"172.16.50.254\",\n            \"SubnetMask\": \"255.255.255.0\"\n        }\n    ]\n}\n\nIf using ilo-pmem:\n\n{\"IPv4Addresses\": [\n        {\n            \"AddressOrigin\": \"Static\",\n            \"Address\": \"16.84.209.138\",\n            \"Gateway\": \"16.84.208.1\",\n            \"SubnetMask\": \"255.255.254.0\"\n        }\n    ]\n}"
+			},
+			"response": []
+		},
+		{
 			"name": "Change IPv4StaticAddresses",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 						"exec": [
 							""
 						],
@@ -620,45 +1066,6 @@
 			"response": []
 		},
 		{
-			"name": " Enable/Disable SNMP protocol",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\t\"SNMP\": {\r\n        \"Port\": 161,\r\n        \"ProtocolEnabled\": false\r\n    }\r\n}\r\n"
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/networkprotocol",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Managers",
-						"1",
-						"networkprotocol"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "iLO network protocols state",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -701,53 +1108,11 @@
 			"response": []
 		},
 		{
-			"name": "Enable iLO SMTP",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"Oem\": {\"Hpe\": {\"AlertMailEnabled\": false}}}\n\n"
-				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/networkprotocol",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Managers",
-						"1",
-						"networkprotocol"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Change DNS configuration",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 						"exec": [
 							""
 						],
@@ -935,10 +1300,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"Oem\": {\r\n        \"Hpe\": {\r\n        \t\"DHCPv4\": {\r\n                \"UseDNSServers\": false,\r\n                \"UseDomainName\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseGateway\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseStaticRoutes\": false\r\n            },\r\n            \"DomainName\": \"foo.bar\"\r\n        }\r\n    }\r\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\r\n\"Oem\": {\r\n        \"Hpe\": {\r\n        \t\"DHCPv4\": {\r\n                \"UseDNSServers\": false,\r\n                \"UseDomainName\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseGateway\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseStaticRoutes\": false\r\n            },\r\n            \"DomainName\": \"foo.bar\"\r\n        }\r\n    }\r\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
@@ -979,10 +1341,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"Oem\": {\r\n        \"Hpe\": {\r\n        \t\"DHCPv6\": {\r\n                \"StatefulModeEnabled\": false,\r\n                \"StatelessModeEnabled\": false,\r\n                \"UseDNSServers\": false,\r\n                \"UseDomainName\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseRapidCommit\": false\r\n            },\r\n            \"DomainName\": \"\"\r\n        }\r\n    }\r\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\r\n\"Oem\": {\r\n        \"Hpe\": {\r\n        \t\"DHCPv6\": {\r\n                \"StatefulModeEnabled\": false,\r\n                \"StatelessModeEnabled\": false,\r\n                \"UseDNSServers\": false,\r\n                \"UseDomainName\": false,\r\n                \"UseNTPServers\": false,\r\n                \"UseRapidCommit\": false\r\n            },\r\n            \"DomainName\": \"\"\r\n        }\r\n    }\r\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
@@ -1008,7 +1367,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e4becd16-4188-465e-b211-6ffcc244e25b",
 						"exec": [
 							"// Make sure we'll work on a suitable response.",
 							"pm.test(\"Status code is 200\", function () {",
@@ -1057,10 +1415,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {}
-					}
+					"raw": ""
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Managers/1/",
@@ -1135,10 +1490,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"HostName\": \"ilo-hst360g10\"\r\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\r\n    \"HostName\": \"ilo-hst360g10\"\r\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1",
@@ -1178,10 +1530,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"DHCPv4\": {\r\n        \"DHCPEnabled\": false,\r\n        \"UseDNSServers\": false,\r\n        \"UseDomainName\": false,\r\n        \"UseGateway\": false,\r\n        \"UseNTPServers\": false,\r\n        \"UseStaticRoutes\": false\r\n    },\r\n    \"FQDN\": \"ilo-hst360g10.b172.local\"\r\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\r\n    \"DHCPv4\": {\r\n        \"DHCPEnabled\": false,\r\n        \"UseDNSServers\": false,\r\n        \"UseDomainName\": false,\r\n        \"UseGateway\": false,\r\n        \"UseNTPServers\": false,\r\n        \"UseStaticRoutes\": false\r\n    },\r\n    \"FQDN\": \"ilo-hst360g10.b172.local\"\r\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/1/",
@@ -1201,7 +1550,231 @@
 				"description": "Test"
 			},
 			"response": []
+		},
+		{
+			"name": "Change iLO TimeZone",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"TimeZone\":\n        {\n            \"Name\": \"Paris\"\n        }\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/DateTime",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"DateTime"
+					]
+				},
+				"description": "Make sure DHCPv4 and v6 supplied timezones are disabled !\r\n\r\n[Doc entry point](https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/#date-time-service-resource)\r\n\r\nLook for string `paris` for list of possible timezone names in [Bios Attributes](https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/#attributes).\r\n\r\nOr GET TimeZoneList"
+			},
+			"response": []
+		},
+		{
+			"name": "Change iLO TimeZone(2)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"TimeZone\":\n        {\n            \"Name\": \"Berlin\"\n        }\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/DateTime",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"DateTime"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iLO4 NetworkProtocol/NetworkService",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/NetworkService/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"NetworkService",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enable/Disable iLO SMTP",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Oem\": {\"Hpe\": {\"AlertMailEnabled\": false}}}\n\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/networkprotocol",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"networkprotocol"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iLO Network Interface collection",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/EthernetInterfaces/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"EthernetInterfaces",
+						""
+					]
+				}
+			},
+			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

@@ -29,10 +29,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {}
-					}
+					"raw": ""
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Managers/1/SecurityService",
@@ -118,6 +115,49 @@
 						"SecurityService",
 						"SecurityDashboard",
 						"SecurityParams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expanded Security Params Collection",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/SecurityService/SecurityDashboard/SecurityParams?$expand=.",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"SecurityService",
+						"SecurityDashboard",
+						"SecurityParams"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "."
+						}
 					]
 				}
 			},
@@ -251,10 +291,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Ignore\": true\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\n\t\"Ignore\": true\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Managers/1/SecurityService/SecurityDashboard/SecurityParams/5",
@@ -276,7 +313,7 @@
 			"response": []
 		},
 		{
-			"name": "Security Params Collection",
+			"name": "Certificates",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -295,7 +332,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/SecurityService/SecurityDashboard/SecurityParams?$expand=.",
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/SecurityService/HttpsCert/",
 					"host": [
 						"{{iloURI}}"
 					],
@@ -305,19 +342,96 @@
 						"Managers",
 						"1",
 						"SecurityService",
-						"SecurityDashboard",
-						"SecurityParams"
+						"HttpsCert",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Certificate Signing Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"City\": \"Sophia Antipolis\", \r\n    \"CommonName\": \"ilo-toybox.etc.fr.comm.hpecorp.net\", \r\n    \"Country\": \"FR\", \r\n    \"OrgName\": \"HPE\", \r\n    \"OrgUnit\": \"Compute\", \r\n    \"State\": \"Provence-Alpes-Cote d'Azur\", \r\n    \"IncludeIP\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/SecurityService/HttpsCert/Actions/HpHttpsCert.GenerateCSR",
+					"host": [
+						"{{iloURI}}"
 					],
-					"query": [
-						{
-							"key": "$expand",
-							"value": "."
-						}
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"SecurityService",
+						"HttpsCert",
+						"Actions",
+						"HpHttpsCert.GenerateCSR"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Import new Certificate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIELzCCAxegAwIBAgIBAjANBgkqhkiG9w0BAQsFADCBvTELMAkGA1UEBhMCRlIx\\nIzAhBgNVBAgMGlByb3ZlbmNlLUFscGVzLUNvdGUgZCdBenVyMRkwFwYDVQQHDBBT\\nb3BoaWEtQW50aXBvbGlzMQwwCgYDVQQKDANIUEUxEDAOBgNVBAsMB0NvbXB1dGUx\\nJzAlBgNVBAMMHnRveWJveC5ldGMuZnIuY29tbS5ocGVjb3JwLm5ldDElMCMGCSqG\\nSIb3DQEJARYWZnJhbmNvaXMuZG9uemVAaHBlLmNvbTAeFw0yMTA0MTUwODA4MTRa\\nFw0yMjA0MTUwODA4MTRaMIGaMQswCQYDVQQGEwJGUjEjMCEGA1UECAwaUHJvdmVu\\nY2UtQWxwZXMtQ290ZSBkJ0F6dXIxGTAXBgNVBAcMEFNvcGhpYSBBbnRpcG9saXMx\\nDDAKBgNVBAoMA0hQRTEQMA4GA1UECwwHQ29tcHV0ZTErMCkGA1UEAwwiaWxvLXRv\\neWJveC5ldGMuZnIuY29tbS5ocGVjb3JwLm5ldDCCASIwDQYJKoZIhvcNAQEBBQAD\\nggEPADCCAQoCggEBANHtXv496C8Y/Myu3nHhUgduoUfQQ0h/1m3N7DlYcZJD7cRC\\n3D0GnzaPglE2GrrPbYlJede6Jl2EBCa8DfKfV6/NUe5jq0jOXKngn7Ypk1wvOHsn\\nve1EvN6D+hy9v7MLDW1z26ddipljIyBsE7h6d23Iq3kdvoLz4zMDduy/bYamHyrP\\nrEZzsXmm0ioOl8ITNeDOIf4jrTvqEN0APSsCE4zhUEBm8pDwd1R1hBwQyti4iIaK\\nfr0kvrcVaY9/8WNlWRgjvq/f/xxEyTSh82qbH67omLBt//Bc27phDXPZEr+8hiIm\\nXHcQ09MgiukMlFOULDvtBlePyJyH3kQ7MBJEMVkCAwEAAaNbMFkwCQYDVR0TBAIw\\nADALBgNVHQ8EBAMCBeAwPwYDVR0RBDgwNoIiaWxvLXRveWJveC5ldGMuZnIuY29t\\nbS5ocGVjb3JwLm5ldIIKaWxvLXRveWJveIcECuRLAjANBgkqhkiG9w0BAQsFAAOC\\nAQEAIvwooSzR2It+yaH4RP1dPL6B0VPM/LI99q5XP7bCiG0xmNTzWyqsWU31xsL/\\nwinY2oYYIpomSQvg+OW/sSgESGOzH+hFoRmVLOK/KEADHSyQLGVT4ApumrVPk4tt\\nKTej7AppFGJaWkMsKFS37hCugRjvf1sDLsqZB35KifPEPHtOQXzekinoqKLOsOxq\\nfjtXhY5/4P6ZtDTz/roI+1QhAq8VQRmtKUDNsLnYtPs6i9QLSI/LNmq1ILySAmma\\n8hpjqQ8cp2j8+tTVmIKN+FUxPjTqvwpaTLiJAMbPHtwQOOu+7gYDPXVtCaPtcMHX\\noWmvMu8akaTzzkxBtoWe17OxWQ==\\n-----END CERTIFICATE-----\\n\"\r\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/SecurityService/HttpsCert/Actions/HpHttpsCert.ImportCertificate",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"SecurityService",
+						"HttpsCert",
+						"Actions",
+						"HpHttpsCert.ImportCertificate"
 					]
 				}
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

@@ -12,7 +12,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 						"exec": [
 							""
 						],
@@ -62,7 +61,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9283e1d2-8bb6-4097-b382-68a3a0c9de74",
 						"exec": [
 							""
 						],
@@ -116,7 +114,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9283e1d2-8bb6-4097-b382-68a3a0c9de74",
 						"exec": [
 							""
 						],
@@ -170,7 +167,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9283e1d2-8bb6-4097-b382-68a3a0c9de74",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -224,7 +220,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9283e1d2-8bb6-4097-b382-68a3a0c9de74",
 						"exec": [
 							""
 						],

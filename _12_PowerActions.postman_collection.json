@@ -25,10 +25,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\n\t\"ResetType\": \"GracefulShutdown\"\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\n\n\t\"ResetType\": \"GracefulShutdown\"\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/",
@@ -69,10 +66,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\n\t\"ResetType\": \"On\"\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\n\n\t\"ResetType\": \"On\"\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/",
@@ -117,10 +111,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\n\t\"ResetType\": \"On\"\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\n\n\t\"ResetType\": \"On\"\n}"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Chassis/1/Power",
@@ -138,6 +129,5 @@
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

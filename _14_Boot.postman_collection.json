@@ -29,10 +29,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"Boot\": {\r\n        \"BootOrder\": [\r\n            \"Boot0018\",\r\n            \"Boot0001\",\r\n            \"Boot000E\",\r\n            \"Boot0010\",\r\n            \"Boot0023\",\r\n            \"Boot000A\",\r\n            \"Boot000D\",\r\n            \"Boot000B\",\r\n            \"Boot0003\",\r\n            \"Boot000F\",\r\n            \"Boot0012\",\r\n            \"Boot0014\",\r\n            \"Boot0016\",\r\n            \"Boot0011\",\r\n            \"Boot0015\",\r\n            \"Boot0013\",\r\n            \"Boot0017\",\r\n            \"Boot0019\"\r\n        ]\r\n    }\r\n}\r\n",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\r\n\t\"Boot\": {\r\n        \"BootOrder\": [\r\n            \"Boot0018\",\r\n            \"Boot0001\",\r\n            \"Boot000E\",\r\n            \"Boot0010\",\r\n            \"Boot0023\",\r\n            \"Boot000A\",\r\n            \"Boot000D\",\r\n            \"Boot000B\",\r\n            \"Boot0003\",\r\n            \"Boot000F\",\r\n            \"Boot0012\",\r\n            \"Boot0014\",\r\n            \"Boot0016\",\r\n            \"Boot0011\",\r\n            \"Boot0015\",\r\n            \"Boot0013\",\r\n            \"Boot0017\",\r\n            \"Boot0019\"\r\n        ]\r\n    }\r\n}\r\n"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Systems/1",
@@ -44,6 +41,49 @@
 						"v1",
 						"Systems",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OneTime Boot",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"BootSourceOverrideTarget\": \"BiosSetup\",\r\n    \"BootSourceOverrideEnabled\": \"Once\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/Bios/Boot/Settings",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"Bios",
+						"Boot",
+						"Settings"
 					]
 				}
 			},
@@ -72,10 +112,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"DefaultBootOrder\": [\r\n                    \"UefiShell\",\r\n                    \"EmbeddedStorage\",\r\n                    \"PcieSlotStorage\",\r\n                    \"EmbeddedFlexLOM\",\r\n                    \"PcieSlotNic\",\r\n                    \"Usb\",\r\n                    \"Cd\"\r\n                ]\r\n}\r\n",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\r\n\t\"DefaultBootOrder\": [\r\n                    \"UefiShell\",\r\n                    \"EmbeddedStorage\",\r\n                    \"PcieSlotStorage\",\r\n                    \"EmbeddedFlexLOM\",\r\n                    \"PcieSlotNic\",\r\n                    \"Usb\",\r\n                    \"Cd\"\r\n                ]\r\n}\r\n"
 				},
 				"url": {
 					"raw": "{{iloURI}}/redfish/v1/Systems/1/bios/boot/settings",
@@ -339,6 +376,5 @@
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

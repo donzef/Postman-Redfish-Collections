@@ -49,7 +49,180 @@
 			"response": []
 		},
 		{
-			"name": "iLO Event Logs (IEL)",
+			"name": "Filter IML entries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/LogServices/IML/Entries?$filter=Created gt '2020-11-12T07:49:50Z' ",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"LogServices",
+						"IML",
+						"Entries"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "Created gt '2020-11-12T07:49:50Z' "
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get first IML entries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/LogServices/IML/Entries?$top=10",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"LogServices",
+						"IML",
+						"Entries"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get last IML entries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/LogServices/IML/Entries?skip=100",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"LogServices",
+						"IML",
+						"Entries"
+					],
+					"query": [
+						{
+							"key": "skip",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iLO Event Log (IEL) Entries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/LogServices/IEL/Entries",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"LogServices",
+						"IEL",
+						"Entries"
+					]
+				},
+				"description": "iLO Event Log Entries"
+			},
+			"response": []
+		},
+		{
+			"name": "System Security Log Entries (SL)",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -67,7 +240,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{iloURI}}/redfish/v1/systems/1/logservices/IEL",
+					"raw": "{{iloURI}}/redfish/v1/systems/1/logservices/SL/Entries",
 					"host": [
 						"{{iloURI}}"
 					],
@@ -77,12 +250,12 @@
 						"systems",
 						"1",
 						"logservices",
-						"IEL"
+						"SL",
+						"Entries"
 					]
 				}
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

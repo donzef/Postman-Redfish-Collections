@@ -10,7 +10,7 @@
 			"name": "Schemas",
 			"item": [
 				{
-					"name": "Schemas Root Entry Point",
+					"name": "iLO 5 Schemas Root Entry Point",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -156,6 +156,48 @@
 					"response": []
 				},
 				{
+					"name": "AccountService Schema",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/AccountService.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"AccountService.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "HPE Bios Ext. Schema",
 					"request": {
 						"method": "GET",
@@ -191,9 +233,602 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "UpdateService Schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/UpdateService.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"UpdateService.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HpePowerMeter",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/HpePowerMeter.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"HpePowerMeter.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "iLO 5 HpePowerMeter Schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/HpePowerMeter.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"HpePowerMeter.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "iLO 4 Schemas Root Entry Point",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Schemas/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Schemas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "iLO 4 HpPowerMeter Schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/HPPowerMeter.json/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"HPPowerMeter.json",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "iLO AmplifierPack Schemas EntryPoint",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Schemas",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Schemas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Service Extension Schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/HpeiLOUpdateServiceExt.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"HpeiLOUpdateServiceExt.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Thermal Schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/Thermal.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"Thermal.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Manager DateTime",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/HpeiLODateTime.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"HpeiLODateTime.json"
+							]
+						},
+						"description": "Describes schema for HpeiLODateTime, including NTP and TimeZone"
+					},
+					"response": []
+				},
+				{
+					"name": "EthernetInterface",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/EthernetInterface.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"EthernetInterface.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hpe SNMP Service Schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/HpeiLOSnmpService.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"HpeiLOSnmpService.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ManagerNetworkProtocol Schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/ManagerNetworkProtocol.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"ManagerNetworkProtocol.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SmartStorageConfig",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/schemastore/en/smartstorageconfig.v2_0_2.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"schemastore",
+								"en",
+								"smartstorageconfig.v2_0_2.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chassis schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/Chassis.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"Chassis.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rmte Sup Schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/SchemaStore/en/HpeRemoteSupport.json",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"SchemaStore",
+								"en",
+								"HpeRemoteSupport.json"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
+		},
+		{
+			"name": "Registries",
+			"item": [
+				{
+					"name": "Registries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Registries",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Registries"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Redfish Versions",
@@ -258,6 +893,42 @@
 						"redfish",
 						"v1",
 						""
+					]
+				},
+				"description": "Retrieves Redfish root services."
+			},
+			"response": []
+		},
+		{
+			"name": "Metadata",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/$metadata",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"$metadata"
 					]
 				},
 				"description": "Retrieves Redfish root services."
@@ -524,7 +1195,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8df92e20-5ab7-4c11-b056-cf22ca3bc3c7",
 						"exec": [
 							"// Make sure we'll work on a suitable response.",
 							"pm.test(\"Status code is 200\", function () {",
@@ -595,45 +1265,6 @@
 			"response": []
 		},
 		{
-			"name": "iLO NetworkServices",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/NetworkService/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Managers",
-						"1",
-						"NetworkService",
-						""
-					]
-				},
-				"description": "Retrieves iLO network services (i.e. RemoteSyslog, AlertMail...)"
-			},
-			"response": []
-		},
-		{
 			"name": "Network Device Function",
 			"request": {
 				"method": "GET",
@@ -673,7 +1304,45 @@
 			"response": []
 		},
 		{
-			"name": "RemoteSyslogServer",
+			"name": "iLO NetworkProtocols",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/NetworkProtocol",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Managers",
+						"1",
+						"NetworkProtocol"
+					]
+				},
+				"description": "Retrieves iLO network protocols (i.e. RemoteSyslog, AlertMail...)\r\n\r\nFormerly called networkserives ?"
+			},
+			"response": []
+		},
+		{
+			"name": "RemoteSyslogServer in Network Protocol",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -695,10 +1364,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Oem\": {\n        \"Hpe\": {\n\t\t\t\"RemoteSyslogServer\": \"10.6.7.8; 10.8.7.6\"\n        }\n\t}\n}"
+					"raw": "{\n    \"Oem\": {\n        \"Hpe\": {\n            \"RemoteSyslogServer\": \"10.6.7.8; 10.8.7.6\"\n        }\n    }\n}"
 				},
 				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Managers/1/NetworkService/",
+					"raw": "{{iloURI}}/redfish/v1/Managers/1/NetworkProtocol/",
 					"host": [
 						"{{iloURI}}"
 					],
@@ -707,7 +1376,7 @@
 						"v1",
 						"Managers",
 						"1",
-						"NetworkService",
+						"NetworkProtocol",
 						""
 					]
 				},
@@ -870,141 +1539,6 @@
 			"response": []
 		},
 		{
-			"name": "Filter IML entries",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Systems/1/LogServices/IML/Entries?$filter=Created gt '2020-01-16T08:27:03Z' ",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Systems",
-						"1",
-						"LogServices",
-						"IML",
-						"Entries"
-					],
-					"query": [
-						{
-							"key": "$filter",
-							"value": "Created gt '2020-01-16T08:27:03Z' "
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get last IML entries",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Systems/1/LogServices/IML/Entries?$skip=30 ",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Systems",
-						"1",
-						"LogServices",
-						"IML",
-						"Entries"
-					],
-					"query": [
-						{
-							"key": "$skip",
-							"value": "30 "
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get first IML entries",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/Systems/1/LogServices/IML/Entries?$top=10",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"Systems",
-						"1",
-						"LogServices",
-						"IML",
-						"Entries"
-					],
-					"query": [
-						{
-							"key": "$top",
-							"value": "10"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Devices Collection",
 			"request": {
 				"method": "GET",
@@ -1111,13 +1645,51 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "WWNN and WWPN",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Systems/1/BaseNetworkAdapters/1",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Systems",
+						"1",
+						"BaseNetworkAdapters",
+						"1"
+					]
+				},
+				"description": "Works in Santander's infra at: 10.60.50.25 and 10.60.50.45"
+			},
+			"response": []
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "ff41c0f6-3f8b-4a62-93d1-23c09f5a1a13",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1127,13 +1699,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "bc2c72f8-a9ca-4dca-9937-f10abd5f1ed4",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

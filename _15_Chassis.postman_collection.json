@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "79558f40-06cd-4f65-90df-57daeade4be6",
+		"name": "_15_Chassis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gen10:  Chassis Thermal Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Oem\": {\n        \"Hpe\": {\n            \"ThermalConfiguration\": \"OptimalCooling\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1/Thermal",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1",
+						"Thermal"
+					]
+				},
+				"description": "OptimalCooling\r\n\r\nEnhancedCooling\r\n\r\nIncreasedCooling\r\n\r\nMaximumCooling"
+			},
+			"response": []
+		},
+		{
+			"name": "Chassis Collection",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ComputeNode Chassis",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enclosure Chassis",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/enclosurechassis",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"enclosurechassis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Thermal from Chassis",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1/Thermal",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1",
+						"Thermal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NetworkDeviceFunction 1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1/NetworkAdapters/DC03D000/NetworkDeviceFunctions/1",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1",
+						"NetworkAdapters",
+						"DC03D000",
+						"NetworkDeviceFunctions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NetworkDeviceFunction 1 Settings",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1/NetworkAdapters/DC03D000/NetworkDeviceFunctions/1/Settings",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1",
+						"NetworkAdapters",
+						"DC03D000",
+						"NetworkDeviceFunctions",
+						"1",
+						"Settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify BootMode",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"BootMode\": \"Disabled\"}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1/NetworkAdapters/DC03D000/NetworkDeviceFunctions/1/Settings",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1",
+						"NetworkAdapters",
+						"DC03D000",
+						"NetworkDeviceFunctions",
+						"1",
+						"Settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Network Adapters collection",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1/NetworkAdapters",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1",
+						"NetworkAdapters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Disable LLDP",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Oem\": {\r\n    \"Hpe\": {\r\n      \"Controllers\": [\r\n        {\r\n          \"EmbeddedLLDPFunctions\": {\r\n            \"Enabled\": false\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1/NetworkAdapters/DC062000/Settings/",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1",
+						"NetworkAdapters",
+						"DC062000",
+						"Settings",
+						""
+					]
+				},
+				"description": "Disable all LLDP funcionts in this controller"
+			},
+			"response": []
+		},
+		{
+			"name": "Set IndicatorLED of Enclosure",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"IndicatorLED\": \"Lit\"}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/enclosurechassis",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"enclosurechassis"
+					]
+				},
+				"description": "Make sure the Environment is Synergy. For Example the Santander environment."
+			},
+			"response": []
+		},
+		{
+			"name": "Set IndicatorLED ComputeNode Chassis",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "OData-Version",
+						"value": "4.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"IndicatorLED\": \"Lit\"}"
+				},
+				"url": {
+					"raw": "{{iloURI}}/redfish/v1/Chassis/1",
+					"host": [
+						"{{iloURI}}"
+					],
+					"path": [
+						"redfish",
+						"v1",
+						"Chassis",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

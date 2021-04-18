@@ -1,13 +1,13 @@
 {
 	"info": {
 		"_postman_id": "ff3a54f8-8f96-4f17-ba7d-7cb61c3d4e5e",
-		"name": "2_SmartStorage",
+		"name": "2_Storage",
 		"description": "Management of HPE Smart Storage: view, create, delete disks and logical drives.\n\nThis collection can only be used against HPE Gen10 servers only.\n\nThis collection has been used to write the [Storage management with Redfish](https://developer.hpe.com/blog/storage-management-with-redfish) article.\n\n[Published](https://documenter.getpostman.com/view/3625509/RzfmESXR)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "GET Storage info",
+			"name": "GET SmartStorage info",
 			"item": [
 				{
 					"name": "List array controllers",
@@ -92,7 +92,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"exec": [
 									"// Make sure we'll work on a suitable response.",
 									"pm.test(\"Status code is 200\", function () {",
@@ -127,7 +126,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f7ec55d6-6e33-4288-b387-76b88ef37e05",
 								"exec": [
 									"",
 									""
@@ -258,7 +256,7 @@
 					]
 				},
 				{
-					"name": "Get DiskDrives",
+					"name": "Get DiskDrives Collection",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -298,7 +296,53 @@
 					"response": []
 				},
 				{
-					"name": "LogicalDrives",
+					"name": "Expanded DiskDrive Collection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/DiskDrives/?$expand=.",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"SmartStorage",
+								"ArrayControllers",
+								"0",
+								"DiskDrives",
+								""
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "."
+								}
+							]
+						},
+						"description": "Retrieves the list of disk drives managed by Array Controller 0. Edit accordingly to retrieve the disk of another controller."
+					},
+					"response": []
+				},
+				{
+					"name": "LogicalDrive Collection",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -337,12 +381,56 @@
 					"response": []
 				},
 				{
+					"name": "Expanded LogicalDrive Collection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/LogicalDrives/?$expand=.",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"SmartStorage",
+								"ArrayControllers",
+								"0",
+								"LogicalDrives",
+								""
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Current Configuration",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -394,7 +482,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -447,7 +534,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -497,7 +583,7 @@
 			"description": "GET requests"
 		},
 		{
-			"name": "Create / Modify /Add Storage",
+			"name": "Create/Modify/Add SmartStorage",
 			"item": [
 				{
 					"name": "Create RAID1 with SpareDrive",
@@ -505,7 +591,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"exec": [
 									""
 								],
@@ -562,7 +647,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"exec": [
 									""
 								],
@@ -619,7 +703,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"exec": [
 									""
 								],
@@ -677,7 +760,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"exec": [
 									""
 								],
@@ -733,7 +815,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"exec": [
 									""
 								],
@@ -790,7 +871,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -840,6 +920,63 @@
 						"description": "PATCH request to sanitize/erase a physical disk. \n\n"
 					},
 					"response": []
+				},
+				{
+					"name": "Create Array with 2 RAID0 LogicalDrives noSpare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"DataGuard\": \"Disabled\",\n    \"LogicalDrives\": [\n        {\n          \"LogicalDriveName\": \"Toto-1\",\n          \"Raid\": \"Raid0\",\n          \"DataDrives\": [\n                \"1I:3:1\"\n          ]\n        },\n        {\n          \"LogicalDriveName\": \"Toto-2\",\n          \"Raid\": \"Raid0\",\n          \"DataDrives\": [\n                \"1I:3:2\"\n          ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"systems",
+								"1",
+								"smartstorageconfig",
+								"settings",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "Create / Modify / Add storage elements ",
@@ -847,7 +984,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1a86ef4a-3d2f-4f2f-93ed-48c1c85b9e7c",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -857,7 +993,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3df66ac1-fabb-4cc8-9019-2f39be37108e",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -867,7 +1002,7 @@
 			]
 		},
 		{
-			"name": "Delete / Remove Storage elements",
+			"name": "Delete/Remove SmartStorage elements",
 			"item": [
 				{
 					"name": "Delete All Logical Drives and Clear Controller Config",
@@ -875,7 +1010,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -932,7 +1066,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -989,7 +1122,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"exec": [
 									""
 								],
@@ -1046,7 +1178,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43481402-97ba-4d30-9a28-bc6e14228909",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1100,69 +1231,214 @@
 			]
 		},
 		{
-			"name": "Create Array with 2 RAID0 LogicalDrives noSpare",
-			"event": [
+			"name": "Storage",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "43481402-97ba-4d30-9a28-bc6e14228909",
-						"exec": [
-							""
+					"name": "Links to Drives from Chassis",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
 						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "OData-Version",
-						"value": "4.0",
-						"disabled": true
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Chassis/1/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Chassis",
+								"1",
+								""
+							]
+						},
+						"description": "\r\nValid in Santander environment : 16.60.50.40\r\n"
 					},
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "X-Auth-Token",
-						"value": "{{Token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"DataGuard\": \"Disabled\",\n    \"LogicalDrives\": [\n        {\n          \"LogicalDriveName\": \"Toto-1\",\n          \"Raid\": \"Raid0\",\n          \"DataDrives\": [\n                \"1I:3:1\"\n          ]\n        },\n        {\n          \"LogicalDriveName\": \"Toto-2\",\n          \"Raid\": \"Raid0\",\n          \"DataDrives\": [\n                \"1I:3:2\"\n          ]\n        }\n    ]\n}"
+					"response": []
 				},
-				"url": {
-					"raw": "{{iloURI}}/redfish/v1/systems/1/smartstorageconfig/settings/",
-					"host": [
-						"{{iloURI}}"
-					],
-					"path": [
-						"redfish",
-						"v1",
-						"systems",
-						"1",
-						"smartstorageconfig",
-						"settings",
-						""
-					]
+				{
+					"name": "SSD properties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/Storage/DA000000/Drives/DA000000/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"Storage",
+								"DA000000",
+								"Drives",
+								"DA000000",
+								""
+							]
+						},
+						"description": "From Santander 10.60.50.40. SSD drive."
+					},
+					"response": []
+				},
+				{
+					"name": "Storage Collection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/Storage/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"Storage",
+								""
+							]
+						},
+						"description": "From Santander 10.60.50.40. SSD drive."
+					},
+					"response": []
+				},
+				{
+					"name": "NVMe Storage Entry Point",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/Storage/DA000000/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"Storage",
+								"DA000000",
+								""
+							]
+						},
+						"description": "From Santander 10.60.50.40"
+					},
+					"response": []
+				},
+				{
+					"name": "NVMe Storage Controller properties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "OData-Version",
+								"value": "4.0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{iloURI}}/redfish/v1/Systems/1/Storage/DA000000#/StorageControllers/0/",
+							"host": [
+								"{{iloURI}}"
+							],
+							"path": [
+								"redfish",
+								"v1",
+								"Systems",
+								"1",
+								"Storage",
+								"DA000000"
+							],
+							"hash": "/StorageControllers/0/"
+						},
+						"description": "From Santander 10.60.50.40"
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "21681f5a-08bc-4460-9e57-2242b584910d",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1172,7 +1448,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "41e0eaf3-47ac-49ce-9359-588c7420b31e",
 				"type": "text/javascript",
 				"exec": [
 					""
